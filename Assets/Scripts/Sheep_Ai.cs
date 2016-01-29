@@ -52,6 +52,9 @@ public class Sheep_Ai : MonoBehaviour {
 			
 			// We can now continue with standard movements.
 			reroute = false;
+			
+			// To make sure that AI doesn't get stuck while trying to escape a border.
+			timeUntillRotate = turnMaxTime;
 		}
 	}
 	
