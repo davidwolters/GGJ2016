@@ -15,9 +15,13 @@ public class Player_Webshoot : MonoBehaviour
 
 	private float shootCoolDown = 0.0f;
 
+	private Renderer renderer;
+	private Renderer ballRenderer;
+
 	void Start () 
 	{
-
+		renderer = GetComponent <Renderer> ();
+		ballRenderer = hitBall.GetComponent <Renderer> ();
 	}
 	
 	void Update () 
@@ -28,8 +32,8 @@ public class Player_Webshoot : MonoBehaviour
 			shooting = true;
 			if (transform.localScale.y <= maxWebScale)
 			{
-				gameObject.SetActive (true);
-				hitBall.gameObject.SetActive (true);
+				renderer.enabled = true;
+				ballRenderer.enabled = true;
 				ShootWeb (shootSpeed * Time.deltaTime);
 				MoveObj (shootSpeed * Time.deltaTime * 2, hitBall);
 				shooting = true;
@@ -56,8 +60,8 @@ public class Player_Webshoot : MonoBehaviour
 				print ("SHOOTING ENABLED"); 
 				canShoot = true;
 				shooting = false;
-				gameObject.SetActive (true);
-				hitBall.gameObject.SetActive (true);
+				renderer.enabled = false;
+				ballRenderer.enabled = false;
 			}
 		}
 

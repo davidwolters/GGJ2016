@@ -30,6 +30,7 @@ public class Player_CarrySheep : MonoBehaviour
 			carryingSheep = true;
 			if (Input.GetAxisRaw (Player_Controls.sheepPickup) > 0)
 			{
+				sheep.GetComponent <Sheep_Ai> ().enabled = true;;
 				sheep.localPosition = relativePutDownSheepPos;
 				sheep.SetParent (null);
 				sheep = null;
@@ -62,6 +63,7 @@ public class Player_CarrySheep : MonoBehaviour
 		this.sheep.SetParent (transform);
 		this.sheep.localPosition = relativeSheepPos;
 		this.sheep.localRotation = relativeSheepQuat;
+		this.sheep.GetComponent <Sheep_Ai> ().enabled = false;
 
 	}
 }
