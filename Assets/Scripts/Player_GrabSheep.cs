@@ -6,6 +6,7 @@ public class Player_GrabSheep : MonoBehaviour
 	[SerializeField] private Vector3 relativeSheepPos;
 	[SerializeField] private Vector3 relativeSheepRot;
 	[SerializeField] private Player_CarrySheep carryScript;
+	[SerializeField] private Player_Webshoot shootScript;
 
 
 
@@ -25,6 +26,7 @@ public class Player_GrabSheep : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
 		if (sheep != null)
 		{
 			if (!Player_Webshoot.shooting)
@@ -50,5 +52,7 @@ public class Player_GrabSheep : MonoBehaviour
 
 
 		}
+
+
 	}
 }

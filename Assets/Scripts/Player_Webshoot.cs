@@ -11,7 +11,7 @@ public class Player_Webshoot : MonoBehaviour
 
 	[HideInInspector] public static bool shooting = false;
 
-	private bool canShoot = true;
+	public bool canShoot = true;
 
 	private float shootCoolDown = 0.0f;
 
@@ -27,7 +27,7 @@ public class Player_Webshoot : MonoBehaviour
 	void Update () 
 	{
 		
-		if (((Input.GetAxisRaw (Player_Controls.shoot) > 0 && canShoot) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep)
+		if (((Input.GetAxisRaw (Player_Controls.shoot) > 0) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)
 		{
 			shooting = true;
 			if (transform.localScale.y <= maxWebScale)
@@ -86,5 +86,17 @@ public class Player_Webshoot : MonoBehaviour
 	void MoveObj (float speed, Transform moveObj)
 	{
 		moveObj.Translate (0, speed, 0);
+	}
+
+
+	void OnTriggerEnter (Collider other)
+	{
+		print ("On trigger enter"); 
+		canShoot = false;
+
+
+		//other.GetComponent <CapsuleCollider> ().enabled = false;
+
+		//shooting = false;
 	}
 }
