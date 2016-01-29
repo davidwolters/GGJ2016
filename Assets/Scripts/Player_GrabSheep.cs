@@ -46,6 +46,8 @@ public class Player_GrabSheep : MonoBehaviour
 			other.transform.SetParent (transform);
 			other.transform.localRotation = relativeSheepQuat;
 			other.transform.localPosition = relativeSheepPos;
+			other.GetComponent <NavMeshAgent> ().enabled = false;
+
 
 		}
 	}
