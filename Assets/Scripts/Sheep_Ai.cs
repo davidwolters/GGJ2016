@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Sheep_Ai : MonoBehaviour {
 	
+	// The navmesh agent.
 	private NavMeshAgent agent;
 	[SerializeField] private GameObject arena;
 	
@@ -29,7 +30,6 @@ public class Sheep_Ai : MonoBehaviour {
 			timeUntillNewDest-=Time.deltaTime;
 			
 		}
-		//agent.
 	}
 	
 	
