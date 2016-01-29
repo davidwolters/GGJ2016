@@ -4,10 +4,10 @@ using System.Collections;
 public class Sheep_Ai : MonoBehaviour {
 	
 	// The maximum time between turns.
-	public int turnMaxTime = 3;
+	public float turnMaxTime = 3;
 
 	// The minimum time between turns.
-	public int turnMinTime = 2;
+	public float turnMinTime = 2;
 	
 	// Time untill the next rotate. Deincreaments every frame.
 	private float timeUntillRotate;
