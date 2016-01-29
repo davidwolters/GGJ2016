@@ -22,21 +22,22 @@ public class Player_Webshoot : MonoBehaviour
 	
 	void Update () 
 	{
-		if (((Input.GetAxisRaw (Player_Controls.shootWeb) > 0 && canShoot) || shooting) && shootCoolDown == 0f)
+		
+		if (((Input.GetAxisRaw (Player_Controls.shoot) > 0 && canShoot) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep)
 		{
 			shooting = true;
 			if (transform.localScale.y <= maxWebScale)
 			{
+				gameObject.SetActive (true);
+				hitBall.gameObject.SetActive (true);
 				ShootWeb (shootSpeed * Time.deltaTime);
 				MoveObj (shootSpeed * Time.deltaTime * 2, hitBall);
 				shooting = true;
 				canShoot = true;
-				print ("can shoot"); 
 			} else
 			{
 				canShoot = false;
 				//shooting = false;
-				print ("can't shoot");
 				shootCoolDown = origShootColldown;
 
 			}
@@ -52,8 +53,11 @@ public class Player_Webshoot : MonoBehaviour
 
 			} else
 			{
+				print ("SHOOTING ENABLED"); 
 				canShoot = true;
 				shooting = false;
+				gameObject.SetActive (true);
+				hitBall.gameObject.SetActive (true);
 			}
 		}
 

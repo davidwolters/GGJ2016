@@ -5,6 +5,10 @@ public class Player_GrabSheep : MonoBehaviour
 {
 	[SerializeField] private Vector3 relativeSheepPos;
 	[SerializeField] private Vector3 relativeSheepRot;
+	[SerializeField] private Player_CarrySheep carryScript;
+
+
+
 	private Quaternion relativeSheepQuat;
 
 	private string sheepTag = "Sheep";
@@ -26,6 +30,7 @@ public class Player_GrabSheep : MonoBehaviour
 			if (!Player_Webshoot.shooting)
 			{
 				sheep.SetParent (null);
+				carryScript.SetCarrySheep (sheep);
 				sheep = null;
 			}
 		}
@@ -34,7 +39,7 @@ public class Player_GrabSheep : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == sheepTag)
+		if (other.tag == sheepTag && Player_Webshoot.shooting)
 		{
 			print ("TRI"); 
 			sheep = other.transform;
