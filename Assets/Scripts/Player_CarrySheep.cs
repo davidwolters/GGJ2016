@@ -89,10 +89,10 @@ public class Player_CarrySheep : MonoBehaviour
 
 	void DropSheep ()
 	{
-		sheep.GetComponent <Sheep_Ai> ().enabled = true;
-		sheep.GetComponent <CapsuleCollider> ().enabled = true;
+		sheep.GetComponent <BoxCollider> ().enabled = true;
 		this.sheep.GetComponent <Rigidbody> ().isKinematic = false;
 		sheep.GetComponent <NavMeshAgent> ().enabled = true;
+		sheep.GetComponent <Sheep_Ai> ().enabled = true;
 
 
 

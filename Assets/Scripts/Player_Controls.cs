@@ -5,12 +5,12 @@ public static class Player_Controls
 {
 	public static KeyCode forward (PlayerType player)
 	{
-		return (player == PlayerType.PLAYER1) ? KeyCode.W : KeyCode.UpArrow;
+		return (player == PlayerType.PLAYER1) ? KeyCode.W : KeyCode.DownArrow;
 	}
 
 	public static KeyCode backward (PlayerType player)
 	{
-		return (player == PlayerType.PLAYER1) ? KeyCode.S : KeyCode.DownArrow;
+		return (player == PlayerType.PLAYER1) ? KeyCode.S : KeyCode.UpArrow;
 	}
 
 	public static KeyCode left (PlayerType player)
