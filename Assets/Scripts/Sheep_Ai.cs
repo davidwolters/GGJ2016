@@ -14,7 +14,7 @@ public class Sheep_Ai : MonoBehaviour {
 	private NavMeshAgent agent;
 	
 	// The filed we will be navigating on.
-	[SerializeField] private GameObject arena;
+	[HideInInspector] public GameObject arena;
 	
 	// The max and min of arena.
 	private Mesh mesh;

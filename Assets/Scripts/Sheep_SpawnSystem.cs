@@ -6,8 +6,11 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	[SerializeField] private GameObject[] spawnPoints;
 
 	[SerializeField] private GameObject[] spawnObjects;
+	[SerializeField] private GameObject ground1;
+	[SerializeField] private GameObject ground2;
 	[SerializeField] private float minSpawnTime;
 	[SerializeField] private float maxSpawnTime;
+
 
 	float currentTimer = 0f;
 
@@ -45,8 +48,9 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	{
 		int index = GetSpawn ();
 
-		Instantiate (spawnObjects[index], spawnPoints[RevertSpawn (index)].transform.position, spawnPoints[GetSpawn ()].transform.rotation);
-		print ("SPAWN OBJECT"); 
+		GameObject sheepObj = (GameObject) Instantiate (spawnObjects[index], spawnPoints[RevertSpawn (index)].transform.position, spawnPoints[GetSpawn ()].transform.rotation);
+		Sheep_Ai sheep = sheepObj.GetComponent <Sheep_Ai> ();
+		sheep.arena = (index == 0) ? ground1 : ground2;
 	}
 
 	int GetSpawn (){

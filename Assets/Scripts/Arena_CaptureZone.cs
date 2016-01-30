@@ -6,9 +6,15 @@ public class Arena_CaptureZone : MonoBehaviour {
 	public string target;
 
 	[SerializeField] private Player_Points points;
+
+	ParticleSystem particles;
+
+
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
+		//GameObject Explosion = (GameObject)Instantiate(Resources.Load("Explosion"), transform.position, new Quaternion());
+		//particles = Explosion.GetComponent<ParticleSystem>();
 	}
 	
 	void OnTriggerEnter (Collider coll)
@@ -27,16 +33,14 @@ public class Arena_CaptureZone : MonoBehaviour {
 	}
 	
 	void ExplodeEffect(Vector3 pos) {
-		GameObject Explosion = (GameObject)Instantiate(Resources.Load("Explosion"), pos, new Quaternion());
 
         
-        ParticleSystem s = Explosion.GetComponent<ParticleSystem>();
-		
-		s.Play();
+
+		//particles.Play();
 		
         //Destroy(gameObject, s.duration);
 		
-		Destroy (Explosion, s.duration);
+		//Destroy (Explosion, particles.duration);
     }
 
 	
