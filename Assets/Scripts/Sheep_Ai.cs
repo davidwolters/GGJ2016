@@ -18,7 +18,8 @@ public class Sheep_Ai : MonoBehaviour {
 	private NavMeshAgent agent;
 	
 	// The filed we will be navigating on.
-	public GameObject arena;
+	[HideInInspector] public GameObject arena;
+
 
 	[SerializeField] private float phaseSeconds = 0f;
 	
