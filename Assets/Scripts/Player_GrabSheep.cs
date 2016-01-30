@@ -39,7 +39,6 @@ public class Player_GrabSheep : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		print ("TRIGGER"); 
 		if (other.tag.EndsWith (sheepTag) && Util.Shooting (shootScript.player))
 		{
 			sheep = other.transform;
@@ -47,7 +46,7 @@ public class Player_GrabSheep : MonoBehaviour
 			other.transform.localPosition = Vector3.zero;
 			other.GetComponent <NavMeshAgent> ().enabled = false;
 			other.GetComponent <Rigidbody> ().isKinematic = true;
-			other.GetComponent <Collider> ().enabled = false;
+			//other.GetComponent <Collider> ().enabled = false;
 			this.GetComponent <Collider> ().enabled = false;
 
 

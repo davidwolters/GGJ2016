@@ -74,7 +74,6 @@ public class Player_CarrySheep : MonoBehaviour
 
 	public void SetCarrySheep (Transform sheep, PlayerType player)
 	{
-		print ("Carry sheep"); 
 		if (this.player == player)
 		{
 			this.sheep = sheep;
@@ -96,7 +95,7 @@ public class Player_CarrySheep : MonoBehaviour
 
 
 
-		//sheep.localScale = relativePutDownSheepPos;
+		sheep.localPosition = relativePutDownSheepPos;
 		sheep.SetParent (null);
 		sheep = null;	
 		Util.SetCarryingSheep (false, player);

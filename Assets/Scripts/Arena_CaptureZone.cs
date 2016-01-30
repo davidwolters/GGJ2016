@@ -7,26 +7,24 @@ public class Arena_CaptureZone : MonoBehaviour {
 
 	[SerializeField] private Player_Points points;
 
-	ParticleSystem particles;
 
 
 	// Use this for initialization
 	void Start () 
 	{
-		//GameObject Explosion = (GameObject)Instantiate(Resources.Load("Explosion"), transform.position, new Quaternion());
-		//particles = Explosion.GetComponent<ParticleSystem>();
+
 	}
 	
-	void OnTriggerEnter (Collider coll)
+	void OnCollisionStay (Collision coll)
 	{
+		print ("trigger: " + coll.transform.tag+ ", =? " + target); 
 		if (coll.gameObject.tag.Equals(target))
 		{
 			
 			points.Point += 1;
 			ExplodeEffect(coll.transform.position);
 
-			coll.gameObject.GetComponent <Animator> ().enabled = true;
-			coll.gameObject.GetComponent <Animator> ().SetTrigger ("Dead");
+
 			print ("U IS DEAD"); 
 
 			GameObject.Destroy(coll.gameObject);
@@ -34,7 +32,8 @@ public class Arena_CaptureZone : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 	
 	}
 	

@@ -39,10 +39,6 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (sheepInGame < maxSheepInGame)
-		{
-			print ("MORE SHEEPS"); 
-		}
 		GetSheepInGame ();
 		if (currentTimer > 0)
 		{

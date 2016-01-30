@@ -70,7 +70,7 @@ public class Sheep_Ai : MonoBehaviour {
 			DoNewPos ();
 		
 			// Begin move cycle.
-			if (agent)
+			if (agent.enabled)
 				agent.SetDestination(dest);
 		}
 		mandatoryDistance = oldMandatoryDistance;
