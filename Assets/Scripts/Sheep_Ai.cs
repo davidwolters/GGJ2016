@@ -32,7 +32,7 @@ public class Sheep_Ai : MonoBehaviour {
 	{
 		// Get referacnes.
 		agent = GetComponent <NavMeshAgent> ();
-		mesh = arena.GetComponent<MeshFilter>().mesh;
+		mesh = arena.GetComponent<MeshFilter>().sharedMesh;
 		DoNewPos ();
 		
 		// Begin move cycle.
@@ -41,7 +41,6 @@ public class Sheep_Ai : MonoBehaviour {
 
 	void OnEnable ()
 	{
-		print ("ENABLICUS");
 		DoNewPos ();
 		agent.SetDestination(dest);
 
@@ -52,7 +51,7 @@ public class Sheep_Ai : MonoBehaviour {
 		int oldMandatoryDistance = mandatoryDistance;
 		if (coll.gameObject != arena && arena)
 		{
-			mandatoryDistance  = oldMandatoryDistance + 2;
+			//mandatoryDistance  = oldMandatoryDistance + 2;
 			DoNewPos ();
 		
 			// Begin move cycle.
@@ -111,7 +110,6 @@ public class Sheep_Ai : MonoBehaviour {
 			// Set the path.
 			agent.SetDestination(dest);
 		
-			print (dest);
 		}
 		
 		if (agent)
