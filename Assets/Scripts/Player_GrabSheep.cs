@@ -45,7 +45,7 @@ public class Player_GrabSheep : MonoBehaviour
 			other.transform.SetParent (transform);
 			other.GetComponent <NavMeshAgent> ().enabled = false;
 			other.GetComponent <Rigidbody> ().isKinematic = true;
-			//this.GetComponent <Collider> ().enabled = false;
+			this.GetComponent <Collider> ().enabled = false;
 
 
 		}
