@@ -4,8 +4,6 @@ using UnityEngine.UI;
 public class Player_Points : MonoBehaviour {
 
 
-	public int mana = 10;
-
 	private Text text;
 	[SerializeField] private GameObject TextObject;
 
@@ -18,10 +16,8 @@ public class Player_Points : MonoBehaviour {
 		}
 		set
 		{
-			mana += (value * 2);
 			text.text = this.point.ToString();
 			this.point = value;
-			print(Point);
 		}
 	}
 
