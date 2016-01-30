@@ -27,7 +27,9 @@ public class Arena_CaptureZone : MonoBehaviour {
 
 			coll.gameObject.GetComponent <Animator> ().enabled = true;
 			coll.gameObject.GetComponent <Animator> ().SetTrigger ("Dead");
-			//GameObject.Destroy(coll.gameObject);
+			print ("U IS DEAD"); 
+
+			GameObject.Destroy(coll.gameObject);
 		}
 	}
 	
