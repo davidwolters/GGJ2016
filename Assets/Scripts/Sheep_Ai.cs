@@ -28,8 +28,6 @@ public class Sheep_Ai : MonoBehaviour {
 	// The distance that is required.
 	public int mandatoryDistance = 2;
 	
-	// For debug.
-	public GameObject block;
 	void Start ()
 	{
 		// Get referacnes.
@@ -83,10 +81,6 @@ public class Sheep_Ai : MonoBehaviour {
 		
 		// Set old pos.			
 		oldPos = dest;
-		
-		// Debug.
-		Instantiate (block, dest, Quaternion.identity);
-
 		
 	}
 	
