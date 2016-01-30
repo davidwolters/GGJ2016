@@ -7,4 +7,15 @@ public static class Util
 	{
 		return originalScale += scaleAmount;
 	}
+
+	public static bool Shooting (PlayerType player)
+	{
+		if (player == PlayerType.PLAYER1)
+		{
+			return Player_Webshoot.shooting1;
+		} else
+		{
+			return Player_Webshoot.shooting2;	
+		}
+	}
 }

@@ -8,9 +8,10 @@ public class Player_Webshoot : MonoBehaviour
 	[SerializeField] private float minWebScale;
 	[SerializeField] private float origShootColldown = 0.3f;
 	[SerializeField] private Transform hitBall;
-	[SerializeField] private PlayerType player = PlayerType.PLAYER1;
+	public PlayerType player = PlayerType.PLAYER1;
 
-	[HideInInspector] public static bool shooting = false;
+	[HideInInspector] public static bool shooting1 = false;
+	[HideInInspector] public static bool shooting2 = false;
 
 	public bool canShoot = true;
 
@@ -25,21 +26,27 @@ public class Player_Webshoot : MonoBehaviour
 	{
 		renderer = GetComponent <Renderer> ();
 		ballRenderer = hitBall.GetComponent <Renderer> ();
+		print ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)); 
+
 	}
 	
 	void Update () 
 	{
-		
-		if (((Input.GetAxisRaw (Player_Controls.shoot ()) > 0) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)
+		if ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot))
 		{
-			shooting = true;
+
+			shooting1 = player == PlayerType.PLAYER1;
+			shooting2 = player == PlayerType.PLAYER2;
 			if (transform.localScale.y <= maxWebScale)
 			{
+				print (Player_Controls.shoot (player)); 
+
 				renderer.enabled = true;
 				ballRenderer.enabled = true;
 				ShootWeb (shootSpeed * Time.deltaTime);
 				MoveObj (shootSpeed * Time.deltaTime * 2, hitBall);
-				shooting = true;
+				shooting1 = player == PlayerType.PLAYER1;
+				shooting2 = player == PlayerType.PLAYER2;
 				canShoot = true;
 			} else
 			{
@@ -62,7 +69,14 @@ public class Player_Webshoot : MonoBehaviour
 			{
 				print ("SHOOTING ENABLED"); 
 				canShoot = true;
-				shooting = false;
+				if (player == PlayerType.PLAYER1)
+				{
+					shooting1 = false;
+				} else 
+				{
+					shooting2 = false;
+				}
+
 				renderer.enabled = false;
 				ballRenderer.enabled = false;
 			}
@@ -100,6 +114,5 @@ public class Player_Webshoot : MonoBehaviour
 
 		//other.GetComponent <CapsuleCollider> ().enabled = false;
 
-		//shooting = false;
 	}
 }

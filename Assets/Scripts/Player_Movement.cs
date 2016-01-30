@@ -4,7 +4,10 @@ using System.Collections;
 public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] private float moveSpeed;
+	[SerializeField] private float turnSpeed;
 	[SerializeField] private Camera cam;
+	[SerializeField] private PlayerType player;
+
 
 	void Start ()
 	{
@@ -14,21 +17,40 @@ public class Player_Movement : MonoBehaviour
 	void Update () 
 	{
 		
-			UpdatePosition ();
+		UpdatePosition ();
 		
-		UpdateRotation (); 
+		//UpdateRotation (); 
 
 	}
 
 	void UpdatePosition ()
 	{
 		float localMoveSpeed = moveSpeed; // this is used because if the player is shooting, we slow down the speed
-		localMoveSpeed /= (Player_Webshoot.shooting) ? 2f : 1;
+		localMoveSpeed /= (Util.Shooting (player)) ? 2f : 1;
 
-		float horMov = Input.GetAxisRaw ("Horizontal") * localMoveSpeed * Time.deltaTime;
-		float verMov = Input.GetAxisRaw ("Vertical") * localMoveSpeed * Time.deltaTime;
-		transform.position += (horMov * Vector3.right + verMov * Vector3.forward);
+		float rawMoveHor = 0;
+		float rawMoveVer = 0;
 
+		if (Input.GetKey (Player_Controls.forward (player)))
+		{
+			rawMoveHor = 1;
+		} 
+		if (Input.GetKey (Player_Controls.backward (player)))
+		{
+			rawMoveHor = -1;
+		} 
+		if (Input.GetKey (Player_Controls.left (player)))
+		{
+			rawMoveVer = 1;
+		} 
+		if (Input.GetKey (Player_Controls.right (player)))
+		{
+			rawMoveVer = -1;
+		} 
+		Vector3 moveVector3 = rawMoveHor * moveSpeed * Time.deltaTime * transform.forward;
+		transform.position += moveVector3;
+
+		transform.Rotate (0, -rawMoveVer * turnSpeed * Time.deltaTime, 0);
 	}
 
 	void UpdateRotation ()

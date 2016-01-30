@@ -25,12 +25,12 @@ public static class Player_Controls
 
 	public static KeyCode shoot (PlayerType player)
 	{
-		return (player == PlayerType.PLAYER1) ? KeyCode.Q : KeyCode.RightShift;
+		return (player == PlayerType.PLAYER1) ? KeyCode.F : KeyCode.RightAlt;
 	}
 
 	public static KeyCode pickUpSheep (PlayerType player)
 	{
-		return (player == PlayerType.PLAYER1) ? KeyCode.LeftShift : KeyCode.RightAlt;
+		return (player == PlayerType.PLAYER1) ? KeyCode.G : KeyCode.Period;
 	}
 
 

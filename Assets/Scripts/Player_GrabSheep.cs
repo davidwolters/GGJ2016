@@ -29,21 +29,20 @@ public class Player_GrabSheep : MonoBehaviour
 		
 		if (sheep != null)
 		{
-			if (!Player_Webshoot.shooting)
+			if (!(Util.Shooting (shootScript.player)))
 			{
 				sheep.SetParent (null);
-				carryScript.SetCarrySheep (sheep);
+				carryScript.SetCarrySheep (sheep, shootScript.player);
 				sheep = null;
 			}
 		}
 	}
-
+	 
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == sheepTag && Player_Webshoot.shooting)
+		if (other.tag == sheepTag && Util.Shooting (shootScript.player))
 		{
-			print ("TRI"); 
 			sheep = other.transform;
 			other.transform.SetParent (transform);
 			other.transform.localRotation = relativeSheepQuat;
