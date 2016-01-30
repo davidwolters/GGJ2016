@@ -39,6 +39,17 @@ public class Sheep_Ai : MonoBehaviour {
 		agent.SetDestination(dest);
 	}
 	
+	void OnCollisionStay (Collision coll)
+	{
+		if (coll.gameObject != arena)
+		{
+			DoNewPos ();
+		
+			// Begin move cycle.
+			agent.SetDestination(dest);
+		}
+	}
+	
 	void DoNewPos ()
 	{
 		
