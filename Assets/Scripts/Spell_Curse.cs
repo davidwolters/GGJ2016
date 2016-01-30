@@ -22,6 +22,7 @@ public class Spell_Curse : MonoBehaviour {
 	public SpellType spellType;
 	public enum SpellType {
 		
+		unknown,
 		freeze,
 		spawn,
 		crazy_sheeps,
@@ -31,17 +32,19 @@ public class Spell_Curse : MonoBehaviour {
 
 	Rigidbody rg;
 
-	// Use this for initialization
-	void Start () {
 	
-		rg = GetComponent<Rigidbody>();
+	public void GetRef (GameObject curser)
+	{
+		
+		this.curser = curser;
+		
+		rg = gameObject.GetComponent<Rigidbody>();
 		
 		playerSheep = curser.GetComponent<Player_Spell>().playerSheep;
 		enemySheep = curser.GetComponent<Player_Spell>().enemySheep;
 		playerArena = curser.GetComponent<Player_Spell>().playerArena;
 		enemyArena = curser.GetComponent<Player_Spell>().enemyArena;
 		enemyObject = curser.GetComponent<Player_Spell>().enemyObject;
-	
 	}
 	
 	void OnCollisionEnter (Collision coll)
@@ -66,12 +69,14 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.freeze)
 		{
+			
 			enemyObject.GetComponent<Player_Movement>().Freeze(7);
 			GameObject.Destroy ( gameObject );
 		}
 		else if (spellType == SpellType.spawn)
 		{
 		
+			print ("SPAWN");
 			Mesh mesh = enemyArena.GetComponent<MeshFilter>().sharedMesh;
 			
 			Vector3 center = (mesh.bounds.center) + enemyArena.transform.position;
@@ -104,14 +109,37 @@ public class Spell_Curse : MonoBehaviour {
 	
 	public void SetCurseById( int id)
 	{
-		print ("SET CURSE!" + id );
-		if (id == 0)
+		Player_Points points = curser.GetComponent<Player_Spell>().points;
+		print ("Mana is: "+points.mana);
+		if (id == 0 && points.mana >= 1)
+		{
+			points.mana -= 1;
 			spellType = SpellType.crazy_sheeps;
-		if (id == 1)
+			return;
+		}
+		else if (id == 1 && points.mana >= 3)
+		{
+			points.mana -= 3;
 			spellType = SpellType.freeze;
-		if (id == 2)
+			return;
+		}
+		else if (id == 2 && points.mana >= 5)
+		{
+			points.mana -= 5;
 			spellType = SpellType.spawn;
-		if (id == 3)
+			return;
+		}
+		else if (id == 3 && points.mana >= 2)
+		{
+			points.mana -= 2;
 			spellType = SpellType.wall_block;
+			return;
+		}
+		else
+		{
+			GameObject.Destroy(this.gameObject);
+		}
+		
+		
 	}
 }

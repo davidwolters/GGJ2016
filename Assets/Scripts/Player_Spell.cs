@@ -8,7 +8,7 @@ public class Player_Spell : MonoBehaviour {
 	[SerializeField] private KeyCode spell3 = KeyCode.Alpha3;
 	[SerializeField] private KeyCode spell4 = KeyCode.Alpha4;
 	private int spell;
-	[SerializeField] private Player_Points points;
+	public Player_Points points;
 
 	public GameObject playerSheep;
 	public GameObject enemySheep;
@@ -43,10 +43,14 @@ public class Player_Spell : MonoBehaviour {
 			DoSpell(3);
 			
 	}
+	
+	
 	void DoSpell(int spell)
 	{
 		
 		GameObject curse = (GameObject) Instantiate(Resources.Load("Curse"), transform.position, transform.rotation);
+		
+		curse.GetComponent<Spell_Curse>().GetRef (this.gameObject);
 		
 		Spell_Curse spell_curse = curse.GetComponent<Spell_Curse>();
 		
