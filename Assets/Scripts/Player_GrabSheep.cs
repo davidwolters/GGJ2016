@@ -41,13 +41,14 @@ public class Player_GrabSheep : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == sheepTag && Util.Shooting (shootScript.player))
+		if (other.tag.EndsWith (sheepTag) && Util.Shooting (shootScript.player))
 		{
 			sheep = other.transform;
 			other.transform.SetParent (transform);
-			other.transform.localRotation = relativeSheepQuat;
+			//other.transform.localRotation = relativeSheepQuat;
 			other.transform.localPosition = relativeSheepPos;
 			other.GetComponent <NavMeshAgent> ().enabled = false;
+			other.GetComponent <Rigidbody> ().isKinematic = true;
 
 
 		}

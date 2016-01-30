@@ -26,36 +26,22 @@ public class Player_Spell : MonoBehaviour {
 		}
 		*/
 		if (Input.GetKey(spell1))
-			DoSpell(1);
+			DoSpell(0);
 		if (Input.GetKey(spell2))
-			DoSpell(2);
+			DoSpell(1);
 		if (Input.GetKey(spell3))
-			DoSpell(3);
+			DoSpell(2);
 		if (Input.GetKey(spell4))
-			DoSpell(4);
+			DoSpell(3);
 			
 	}
 	void DoSpell(int spell)
 	{
 		
-		RaycastHit hit;
+		GameObject curse = (GameObject) Instantiate(Resources.Load("Curse"), transform.position, transform.rotation);
 		
-		// TODO: Use a case.
-		if (spell == 1)
-		{
-			Vector3 fwd = transform.forward;
-			//TransformDirection(Vector3.forward);
-        	if (Physics.Raycast(transform.position, fwd, out hit, 10) )
-			{
-				
-				print("There is something in front of the object!");
-				print (hit.transform.gameObject.name);
-			}
-			
-		}
-		else if (spell == 2)
-		{
-			
-		}
+		Spell_Curse spell_curse = curse.GetComponent<Spell_Curse>();
+		
+		spell_curse.SetCurseById (spell);
 	}
 }

@@ -4,6 +4,7 @@ using System.Collections;
 public class Arena_CaptureZone : MonoBehaviour {
 
 	public string target;
+
 	[SerializeField] private Player_Points points;
 	// Use this for initialization
 	void Start () {
@@ -37,5 +38,6 @@ public class Arena_CaptureZone : MonoBehaviour {
 		
 		Destroy (Explosion, s.duration);
     }
+
 	
 }
