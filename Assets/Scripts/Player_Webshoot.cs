@@ -20,26 +20,29 @@ public class Player_Webshoot : MonoBehaviour
 	private Renderer renderer;
 	private Renderer ballRenderer;
 
+	private AudioSource source;
 
 
 	void Start () 
 	{
 		renderer = GetComponent <Renderer> ();
 		ballRenderer = hitBall.GetComponent <Renderer> ();
-		print ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)); 
-
+		source = GetComponent <AudioSource> ();
 	}
 	
 	void Update () 
 	{
 		if ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot))
 		{
+			if (Input.GetKeyDown (Player_Controls.shoot (player)))
+			{
+				source.Play ();
+			}
 
 			shooting1 = player == PlayerType.PLAYER1;
 			shooting2 = player == PlayerType.PLAYER2;
 			if (transform.localScale.y <= maxWebScale)
 			{
-				print (Player_Controls.shoot (player)); 
 
 				renderer.enabled = true;
 				ballRenderer.enabled = true;
@@ -67,7 +70,6 @@ public class Player_Webshoot : MonoBehaviour
 
 			} else
 			{
-				print ("SHOOTING ENABLED"); 
 				canShoot = true;
 				if (player == PlayerType.PLAYER1)
 				{
@@ -108,7 +110,6 @@ public class Player_Webshoot : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
-		print ("On trigger enter"); 
 		canShoot = false;
 
 

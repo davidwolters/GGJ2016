@@ -33,7 +33,7 @@ public class Arena_CaptureZone : MonoBehaviour {
 		
 		s.Play();
 		
-        Destroy(gameObject, s.duration);
+        //Destroy(gameObject, s.duration);
 		
 		Destroy (Explosion, s.duration);
     }
