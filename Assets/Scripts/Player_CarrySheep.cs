@@ -34,7 +34,8 @@ public class Player_CarrySheep : MonoBehaviour
 	{
 		if (sheep != null)
 		{
-			carryingSheep = true;
+
+			Util.SetCarryingSheep (true, player);
 			if (Input.GetKeyDown (Player_Controls.pickUpSheep (player)))
 			{
 				DropSheep ();
@@ -98,6 +99,9 @@ public class Player_CarrySheep : MonoBehaviour
 		sheep.localPosition = relativePutDownSheepPos;
 		sheep.SetParent (null);
 		sheep = null;	
-		carryingSheep = false;
+		Util.SetCarryingSheep (false, player);
 	}
+
+
+
 }
