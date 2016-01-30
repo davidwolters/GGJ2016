@@ -41,6 +41,7 @@ public class Sheep_Ai : MonoBehaviour {
 
 	void OnEnable ()
 	{
+		Start();
 		DoNewPos ();
 		agent.SetDestination(dest);
 
@@ -55,7 +56,8 @@ public class Sheep_Ai : MonoBehaviour {
 			DoNewPos ();
 		
 			// Begin move cycle.
-			agent.SetDestination(dest);
+			if (agent)
+				agent.SetDestination(dest);
 		}
 		mandatoryDistance = oldMandatoryDistance;
 	}
