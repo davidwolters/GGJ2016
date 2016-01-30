@@ -14,12 +14,14 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		print ("asdfasdf"); 
 		currentTimer = GetSpawnTime ();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		print (currentTimer); 
 		if (currentTimer > 0)
 		{
 			 
