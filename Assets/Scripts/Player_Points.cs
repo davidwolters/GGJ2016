@@ -7,7 +7,7 @@ public class Player_Points : MonoBehaviour {
 	private Text text;
 	[SerializeField] private GameObject TextObject;
 
-	private int point;
+	[SerializeField] private int point;
 	[HideInInspector] public int Point
 	{
 		get
@@ -29,9 +29,8 @@ public class Player_Points : MonoBehaviour {
 		text = TextObject.GetComponent<Text>();
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	
+	void OnGUI()
+	{
+		text.text = this.point.ToString();
 	}
 }
