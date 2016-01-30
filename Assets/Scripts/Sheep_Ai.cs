@@ -41,7 +41,7 @@ public class Sheep_Ai : MonoBehaviour {
 	
 	void OnCollisionStay (Collision coll)
 	{
-		if (coll.gameObject != arena)
+		if (coll.gameObject != arena && arena)
 		{
 			DoNewPos ();
 		
