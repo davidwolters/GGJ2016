@@ -96,7 +96,7 @@ public class Player_CarrySheep : MonoBehaviour
 
 
 
-		sheep.localPosition = relativePutDownSheepPos;
+		//sheep.localScale = relativePutDownSheepPos;
 		sheep.SetParent (null);
 		sheep = null;	
 		Util.SetCarryingSheep (false, player);

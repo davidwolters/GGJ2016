@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 230f14e4af0bbfb4895f05e23f6eee4c
 timeCreated: 1454189196
 licenseType: Free
@@ -113,6 +114,14 @@ ModelImporter:
     4300030: pasted__pCube3
     4300032: pasted__pasted__pCube3
     9500000: //RootNode
+=======
+guid: efa3661c2463b4cfba817ec682f5009e
+timeCreated: 1454189076
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName: {}
+>>>>>>> 1fe05339efc1adae5bfe422d6a781e8d660ba7fe
   materials:
     importMaterials: 1
     materialName: 0
