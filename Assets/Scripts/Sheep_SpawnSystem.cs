@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using System.Collections.Generic;
 
 public class Sheep_SpawnSystem : MonoBehaviour 
 {
@@ -10,28 +10,44 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	[SerializeField] private GameObject ground2;
 	[SerializeField] private float minSpawnTime;
 	[SerializeField] private float maxSpawnTime;
+	[SerializeField] private int maxSidesInRow = 2;
+	[SerializeField] private int maxSheepInGame = 20;
+
+	private List <GameObject> spawnedSheep = new List <GameObject> ();
+	private int sheepInGame = 0;
 
 
 	float currentTimer = 0f;
 
+	int currentSide = 0;
+	int sideInRow = 0;
 	// Use this for initialization
 	void Start () 
 	{
-		print ("asdfasdf"); 
 		currentTimer = GetSpawnTime ();
+		currentSide = Random.Range (0, 2);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (sheepInGame < maxSheepInGame)
+		{
+			print ("MORE SHEEPS"); 
+		}
+		GetSheepInGame ();
 		if (currentTimer > 0)
 		{
 			 
 			currentTimer -= Time.deltaTime;
 			if (currentTimer <= 0)
 			{
-				SpawnSheep ();
-				currentTimer = GetSpawnTime ();
+				if (sheepInGame < maxSheepInGame)
+				{
+					SpawnSheep ();
+					currentTimer = GetSpawnTime ();
+				}
+
 			}
 		}
 
@@ -47,15 +63,53 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	{
 		int index = GetSpawn ();
 
-		GameObject sheepObj = (GameObject) Instantiate (spawnObjects[index], spawnPoints[RevertSpawn (index)].transform.position, spawnPoints[GetSpawn ()].transform.rotation);
+		GameObject sheepObj = (GameObject) Instantiate (spawnObjects[index], spawnPoints[RevertSpawn (index)].transform.position, spawnPoints[index].transform.rotation);
 		Sheep_Ai sheep = sheepObj.GetComponent <Sheep_Ai> ();
 		sheep.arena = (index == 0) ? ground1 : ground2;
+		spawnedSheep.Add (sheepObj);
 	}
 
-	int GetSpawn (){
-		return Random.Range (0, 2);
+	int GetSpawn ()
+	{
+		int side = 0;
+		/*if (sideInRow < maxSidesInRow)
+		{
+			side = Random.Range (0, 2);
+			if (side == currentSide)
+			{
+				sideInRow++;
+			} else
+			{
+				sideInRow = 0;
+			}
+		} else
+		{
+			sideInRow = 0;
+			switch (currentSide)
+			{
+			case 0:
+				side = 1;
+				break;
+			case 1:
+				side = 0;
+				break;
+			}
+		}*/
+		switch (currentSide)
+		{
+		case 0:
+			side = 1;
+			break;
+		case 1:
+			side = 0;
+			break;
+		}
 
+		currentSide = side;
+		return side;
 	}
+
+
 
 	int RevertSpawn (int i)
 	{
@@ -69,6 +123,24 @@ public class Sheep_SpawnSystem : MonoBehaviour
 			break;
 		}
 		return 0;
+	}
+
+	void GetSheepInGame ()
+	{
+		int sheep = 0;
+		foreach (GameObject s in spawnedSheep)
+		{
+			if (s != null)
+			{
+				sheep++;
+			} else
+			{
+				spawnedSheep.Remove (s);
+			}
+		}
+
+		sheepInGame = sheep;
+
 	}
 
 }
