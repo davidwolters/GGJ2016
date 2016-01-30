@@ -16,7 +16,7 @@ public class Player_Points : MonoBehaviour {
 		}
 		set
 		{
-			//text.text = this.point.ToString();
+			text.text = this.point.ToString();
 			this.point = value;
 			print(Point);
 		}
