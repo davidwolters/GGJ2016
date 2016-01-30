@@ -10,6 +10,8 @@ public class Sheep_Ai : MonoBehaviour {
 	public float maxNewDestInterval = 4;
 	public float minNewDestInterval = 2;
 	
+	public int mandatoryDistance = 2;
+	
 	private float timeUntillNewDest = 0;
 	void Start ()
 	{
@@ -20,8 +22,19 @@ public class Sheep_Ai : MonoBehaviour {
 		if (timeUntillNewDest <= 0)
 		{
 		
-			Vector3 dest = RandomVector(arena.transform.position - (arena.transform.localScale), arena.transform.position + (arena.transform.localScale) );
+			Vector3 dest = new Vector3();
+			
+			// Generate a new random vector untill the mandatoryDistance is achived.
+			while ( Vector3.Distance(dest, transform.position) < mandatoryDistance )
+			{
+				// Calculate the distance.
+				dest = RandomVector(arena.transform.position - (arena.transform.localScale), arena.transform.position + (arena.transform.localScale) );
+			}
+			
+			// Set the path.
 			agent.SetDestination(dest);
+			
+			// Set the time untill next random dest.
 			timeUntillNewDest = Random.Range(minNewDestInterval ,maxNewDestInterval);
 		}
 		else

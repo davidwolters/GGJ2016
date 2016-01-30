@@ -6,6 +6,7 @@ public class Player_GrabSheep : MonoBehaviour
 	[SerializeField] private Vector3 relativeSheepPos;
 	[SerializeField] private Vector3 relativeSheepRot;
 	[SerializeField] private Player_CarrySheep carryScript;
+	[SerializeField] private Player_Webshoot shootScript;
 
 
 
@@ -25,23 +26,23 @@ public class Player_GrabSheep : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
 		if (sheep != null)
 		{
-			if (!Player_Webshoot.shooting)
+			if (!(Util.Shooting (shootScript.player)))
 			{
 				sheep.SetParent (null);
-				carryScript.SetCarrySheep (sheep);
+				carryScript.SetCarrySheep (sheep, shootScript.player);
 				sheep = null;
 			}
 		}
 	}
-
+	 
 
 	void OnTriggerEnter (Collider other)
 	{
-		if (other.tag == sheepTag && Player_Webshoot.shooting)
+		if (other.tag == sheepTag && Util.Shooting (shootScript.player))
 		{
-			print ("TRI"); 
 			sheep = other.transform;
 			other.transform.SetParent (transform);
 			other.transform.localRotation = relativeSheepQuat;
@@ -50,5 +51,7 @@ public class Player_GrabSheep : MonoBehaviour
 
 
 		}
+
+
 	}
 }

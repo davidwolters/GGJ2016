@@ -3,9 +3,36 @@ using System.Collections;
 
 public static class Player_Controls
 {
-	public static string horizontal = "Horizontal";
-	public static string vertical = "Vertical";
-	public static string shoot = "Fire1";
-	public static string sheepPickup = "Jump";
+	public static KeyCode forward (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.W : KeyCode.UpArrow;
+	}
+
+	public static KeyCode backward (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.S : KeyCode.DownArrow;
+	}
+
+	public static KeyCode left (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.A : KeyCode.LeftArrow;
+	}
+
+	public static KeyCode right (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.D : KeyCode.RightArrow;
+	}
+
+	public static KeyCode shoot (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.F : KeyCode.RightAlt;
+	}
+
+	public static KeyCode pickUpSheep (PlayerType player)
+	{
+		return (player == PlayerType.PLAYER1) ? KeyCode.G : KeyCode.Period;
+	}
+
+
 
 }
