@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Player_Movement : MonoBehaviour
 {
-	[SerializeField] private float moveSpeed;
-	[SerializeField] private float turnSpeed;
+	[SerializeField] private float moveSpeed = 10;
+	[SerializeField] private float turnSpeed = 180;
 	[SerializeField] private Camera cam;
 	[SerializeField] private PlayerType player;
 
