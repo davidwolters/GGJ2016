@@ -47,6 +47,20 @@ public class Sheep_Ai : MonoBehaviour {
 
 	}
 	
+	void OnCollisionStay (Collision coll)
+	{
+		int oldMandatoryDistance = mandatoryDistance;
+		if (coll.gameObject != arena && arena)
+		{
+			mandatoryDistance  = oldMandatoryDistance + 2;
+			DoNewPos ();
+		
+			// Begin move cycle.
+			agent.SetDestination(dest);
+		}
+		mandatoryDistance = oldMandatoryDistance;
+	}
+	
 	void DoNewPos ()
 	{
 		
