@@ -6,6 +6,10 @@ public class Sheep_Ai : MonoBehaviour {
 	// Speed, etc
 	public float acceleration = 2f;
 	public float deceleration = 60f;
+	
+	public float phaseAcceleration = 2f;
+	public float phaseDeceleration = 60f;
+	
 	public float closeEnoughMeters = 4f;
 	
 	
@@ -14,16 +18,19 @@ public class Sheep_Ai : MonoBehaviour {
 	private NavMeshAgent agent;
 	
 	// The filed we will be navigating on.
-<<<<<<< HEAD
 	[HideInInspector] public GameObject arena;
 
-=======
-	public GameObject arena;
 
+	[SerializeField] private float phaseSeconds = 0f;
 	
->>>>>>> 35da0ce4097b1198637f455b0a4f972dbc844f95
+	[SerializeField] private float phaseSpeed = 200f;
+	
+	[SerializeField] private float speed = 20f;
+	
 	// The max and min of arena.
 	private Mesh mesh;
+	
+	
 	
 	// Old pos, to make sure we have some action going on.
 	private Vector3 oldPos = new Vector3 ();
@@ -36,6 +43,7 @@ public class Sheep_Ai : MonoBehaviour {
 	
 	void Start ()
 	{
+		
 		// Get referacnes.
 		agent = GetComponent <NavMeshAgent> ();
 		mesh = arena.GetComponent<MeshFilter>().sharedMesh;
@@ -105,8 +113,20 @@ public class Sheep_Ai : MonoBehaviour {
 		
 	}
 	
+	
+	public void Phase (int seconds)
+	{
+		phaseSeconds = seconds;
+		
+		
+		gameObject.GetComponent<NavMeshAgent>().speed = phaseSpeed;
+		
+	}
+	
 	void Update ()
 	{
+		
+		
 
 		// Check if we are in dest.
 		if (Vector3.Distance(dest, transform.position) <= 1)
@@ -125,8 +145,18 @@ public class Sheep_Ai : MonoBehaviour {
  
        // speed up slowly, but stop quickly
        if (agent.hasPath)
-         agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
- 
+	   
+	   	if (phaseSeconds <= 0)
+		{
+        	agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
+			gameObject.GetComponent<NavMeshAgent>().speed = speed;
+			
+		}
+		else
+		{
+			agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? phaseDeceleration : phaseAcceleration;
+			phaseSeconds -= Time.deltaTime;
+		}
      }
 		
 	}

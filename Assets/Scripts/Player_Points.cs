@@ -18,7 +18,6 @@ public class Player_Points : MonoBehaviour {
 		{
 			text.text = this.point.ToString();
 			this.point = value;
-			print(Point);
 		}
 	}
 

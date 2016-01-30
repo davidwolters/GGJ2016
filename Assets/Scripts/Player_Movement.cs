@@ -5,27 +5,53 @@ public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] private float moveSpeed = 10;
 	[SerializeField] private float turnSpeed = 180;
-	[SerializeField] private Camera cam;
 	[SerializeField] private PlayerType player;
+	[SerializeField] private GameObject model;
 
+	private Animator anim;
 
+	private float currentMoveSpeed = 10;
+	private float currentTurnSpeed = 10;
+	private float oldSpeed;
+	private float oldRotateSpeed;
 	void Start ()
 	{
-		
+		currentTurnSpeed = turnSpeed;
+		currentMoveSpeed = moveSpeed;
+		anim = model.transform.GetComponent <Animator> ();
+
 	}
 	
 	void Update () 
 	{
 		
 		UpdatePosition ();
-		
-		//UpdateRotation (); 
 
 	}
 
+	public void Freeze(float seconds)
+	{
+		
+		// S
+		oldSpeed = moveSpeed;
+		currentMoveSpeed = oldSpeed / 10;
+		
+		// R
+		oldRotateSpeed = turnSpeed;
+		currentTurnSpeed = oldRotateSpeed / 10;
+		
+		
+		Invoke ("UnFreeze", seconds);
+	}
+
+	void UnFreeze ()
+	{
+		currentMoveSpeed = oldSpeed;
+		currentTurnSpeed = oldRotateSpeed;
+	}
 	void UpdatePosition ()
 	{
-		float localMoveSpeed = moveSpeed; // this is used because if the player is shooting, we slow down the speed
+		float localMoveSpeed = currentMoveSpeed; // this is used because if the player is shooting, we slow down the speed
 		localMoveSpeed /= (Util.Shooting (player)) ? 2f : 1;
 
 		float rawMoveHor = 0;
@@ -47,25 +73,15 @@ public class Player_Movement : MonoBehaviour
 		{
 			rawMoveVer = -1;
 		} 
-		Vector3 moveVector3 = rawMoveHor * moveSpeed * Time.deltaTime * transform.forward;
+
+		anim.SetBool ("walking", Mathf.Abs (rawMoveHor) + Mathf.Abs (rawMoveHor) != 0);
+
+		Vector3 moveVector3 = rawMoveHor * currentMoveSpeed * Time.deltaTime * transform.forward;
 		transform.position += moveVector3;
 
-		transform.Rotate (0, -rawMoveVer * turnSpeed * Time.deltaTime, 0);
+		transform.Rotate (0, -rawMoveVer * currentTurnSpeed * Time.deltaTime, 0);
 	}
 
-	void UpdateRotation ()
-	{
-		
-		Ray ray = cam.ScreenPointToRay (Input.mousePosition);
-		RaycastHit hit;
-		if (Physics.Raycast (ray, out hit))
-		{
-			Vector3 lookPoint = hit.point;
-			lookPoint.y = transform.position.y;
-			transform.LookAt (lookPoint);
-		}
-		
 
-	}
 
 }

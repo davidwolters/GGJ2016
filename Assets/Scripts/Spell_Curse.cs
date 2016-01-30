@@ -17,10 +17,12 @@ public class Spell_Curse : MonoBehaviour {
 	
 	private GameObject playerArena;
 	
+	private GameObject enemyObject;
 	
 	public SpellType spellType;
 	public enum SpellType {
 		
+		unknown,
 		freeze,
 		spawn,
 		crazy_sheeps,
@@ -30,17 +32,19 @@ public class Spell_Curse : MonoBehaviour {
 
 	Rigidbody rg;
 
-	// Use this for initialization
-	void Start () {
 	
-		rg = GetComponent<Rigidbody>();
+	public void GetRef (GameObject curser)
+	{
+		
+		this.curser = curser;
+		
+		rg = gameObject.GetComponent<Rigidbody>();
 		
 		playerSheep = curser.GetComponent<Player_Spell>().playerSheep;
 		enemySheep = curser.GetComponent<Player_Spell>().enemySheep;
 		playerArena = curser.GetComponent<Player_Spell>().playerArena;
 		enemyArena = curser.GetComponent<Player_Spell>().enemyArena;
-		
-	
+		enemyObject = curser.GetComponent<Player_Spell>().enemyObject;
 	}
 	
 	void OnCollisionEnter (Collision coll)
@@ -50,17 +54,42 @@ public class Spell_Curse : MonoBehaviour {
 		if (spellType == SpellType.crazy_sheeps)
 		{
 			// Make sheeps crazy.
+			
+			GameObject [] sheeps = GameObject.FindGameObjectsWithTag(playerSheep.tag);
+			
+			foreach (GameObject element in sheeps)
+			{
+    			// For each
+				element.GetComponent<Sheep_Ai>().Phase(2);
+			}
+			
+			GameObject.Destroy ( gameObject );
+			
+			
 		}
 		else if (spellType == SpellType.freeze)
 		{
-			// Make sheeps crazy.
+			
+			enemyObject.GetComponent<Player_Movement>().Freeze(7);
+			GameObject.Destroy ( gameObject );
 		}
 		else if (spellType == SpellType.spawn)
 		{
-			GameObject sheep = (GameObject) Instantiate ( enemySheep, transform.position, transform.rotation);
+		
+			print ("SPAWN");
+			Mesh mesh = enemyArena.GetComponent<MeshFilter>().sharedMesh;
+			
+			Vector3 center = (mesh.bounds.center) + enemyArena.transform.position;
+			
+		
+			GameObject sheep = (GameObject) Instantiate ( enemySheep, center, transform.rotation);
+			
+			
 			sheep.GetComponent<Sheep_Ai>().enabled = false;
 			sheep.GetComponent<Sheep_Ai>().arena = enemyArena;
 			sheep.GetComponent<Sheep_Ai>().enabled = true;
+			
+			
 			GameObject.Destroy(this.gameObject);
 			
 		}
@@ -80,14 +109,37 @@ public class Spell_Curse : MonoBehaviour {
 	
 	public void SetCurseById( int id)
 	{
-		print ("SET CURSE!" + id );
-		if (id == 0)
+		Player_Points points = curser.GetComponent<Player_Spell>().points;
+		print ("Mana is: "+points.mana);
+		if (id == 0 && points.mana >= 5)
+		{
+			points.mana -= 1;
 			spellType = SpellType.crazy_sheeps;
-		if (id == 1)
+			return;
+		}
+		else if (id == 1 && points.mana >= 3)
+		{
+			points.mana -= 3;
 			spellType = SpellType.freeze;
-		if (id == 2)
+			return;
+		}
+		else if (id == 2 && points.mana >= 1)
+		{
+			points.mana -= 5;
 			spellType = SpellType.spawn;
-		if (id == 3)
+			return;
+		}
+		else if (id == 3 && points.mana >= 2)
+		{
+			points.mana -= 2;
 			spellType = SpellType.wall_block;
+			return;
+		}
+		else
+		{
+			GameObject.Destroy(this.gameObject);
+		}
+		
+		
 	}
 }
