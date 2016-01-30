@@ -145,9 +145,9 @@ public class Spell_Curse : MonoBehaviour {
 			spellType = SpellType.spawn;
 			return;
 		}
-		else if (id == 3 && points.mana >= 2)
+		else if (id == 3 && points.mana >= 3)
 		{
-			points.mana -= 2;
+			points.mana -= 3;
 			spellType = SpellType.wall_block;
 			return;
 		}
