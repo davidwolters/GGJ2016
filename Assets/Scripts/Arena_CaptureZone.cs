@@ -23,7 +23,8 @@ public class Arena_CaptureZone : MonoBehaviour {
 		{
 			points.Point += 1;
 			ExplodeEffect(coll.transform.position);
-			GameObject.Destroy(coll.gameObject);
+			coll.gameObject.GetComponent <Sheep_Ai> ().sacrified = true;
+			//GameObject.Destroy(coll.gameObject);
 		}
 	}
 	

@@ -13,7 +13,8 @@ public class Sheep_Ai : MonoBehaviour {
 	public float closeEnoughMeters = 4f;
 	
 	
-	
+	[HideInInspector] public bool sacrified = false;
+
 	// The navmesh agent.
 	private NavMeshAgent agent;
 	
@@ -26,6 +27,10 @@ public class Sheep_Ai : MonoBehaviour {
 	[SerializeField] private float phaseSpeed = 200f;
 	
 	[SerializeField] private float speed = 20f;
+
+	[SerializeField] private float riseSpeed = 3f;
+
+	[SerializeField] private float riseTurnSpeed = 3f;
 	
 	// The max and min of arena.
 	private Mesh mesh;
@@ -126,38 +131,48 @@ public class Sheep_Ai : MonoBehaviour {
 	void Update ()
 	{
 		
-		
+		if (sacrified)
+		{
+			agent.enabled = false;
+			transform.position += Vector3.up * riseSpeed * Time.deltaTime;
+			transform.Rotate (0, riseTurnSpeed * Time.deltaTime, 0);
+			GetComponent <Rigidbody> ().isKinematic = true;
+			GetComponent <BoxCollider> ().enabled = false;
+		} else
+		{
+			// Check if we are in dest.
+			if (Vector3.Distance(dest, transform.position) <= 1)
+			{
 
-		// Check if we are in dest.
-		if (Vector3.Distance(dest, transform.position) <= 1)
-		{
-		
-			
-			DoNewPos ();
-			
-			// Set the path.
-			agent.SetDestination(dest);
-		
+
+				DoNewPos ();
+
+				// Set the path.
+				agent.SetDestination(dest);
+
+			}
+
+			if (agent.enabled)
+			{
+
+				// speed up slowly, but stop quickly
+				if (agent.hasPath)
+
+				if (phaseSeconds <= 0)
+				{
+					agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
+					gameObject.GetComponent<NavMeshAgent>().speed = speed;
+
+				}
+				else
+				{
+					agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? phaseDeceleration : phaseAcceleration;
+					phaseSeconds -= Time.deltaTime;
+				}
+			}
 		}
-		
-		if (agent)
-     {
- 
-       // speed up slowly, but stop quickly
-       if (agent.hasPath)
-	   
-	   	if (phaseSeconds <= 0)
-		{
-        	agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
-			gameObject.GetComponent<NavMeshAgent>().speed = speed;
-			
-		}
-		else
-		{
-			agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? phaseDeceleration : phaseAcceleration;
-			phaseSeconds -= Time.deltaTime;
-		}
-     }
+
+
 		
 	}
 	
@@ -178,5 +193,5 @@ public class Sheep_Ai : MonoBehaviour {
 		
 		return v;
 		
-      }
+   	}
 }
