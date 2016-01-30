@@ -32,7 +32,7 @@ public class Player_Webshoot : MonoBehaviour
 	
 	void Update () 
 	{
-		if ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot))
+		if ((((Input.GetKeyDown (Player_Controls.shoot (player))) || Util.Shooting (player)) && shootCoolDown == 0f && !Util.CarryingSheep (player) && canShoot))
 		{
 			if (Input.GetKeyDown (Player_Controls.shoot (player)))
 			{
