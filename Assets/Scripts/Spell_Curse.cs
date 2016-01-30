@@ -17,6 +17,7 @@ public class Spell_Curse : MonoBehaviour {
 	
 	private GameObject playerArena;
 	
+	private GameObject enemyObject;
 	
 	public SpellType spellType;
 	public enum SpellType {
@@ -39,7 +40,7 @@ public class Spell_Curse : MonoBehaviour {
 		enemySheep = curser.GetComponent<Player_Spell>().enemySheep;
 		playerArena = curser.GetComponent<Player_Spell>().playerArena;
 		enemyArena = curser.GetComponent<Player_Spell>().enemyArena;
-		
+		enemyObject = curser.GetComponent<Player_Spell>().enemyObject;
 	
 	}
 	
@@ -50,10 +51,23 @@ public class Spell_Curse : MonoBehaviour {
 		if (spellType == SpellType.crazy_sheeps)
 		{
 			// Make sheeps crazy.
+			
+			GameObject [] sheeps = GameObject.FindGameObjectsWithTag(playerSheep.tag);
+			
+			foreach (GameObject element in sheeps)
+			{
+    			// For each
+				element.GetComponent<Sheep_Ai>().Phase(2);
+			}
+			
+			GameObject.Destroy ( gameObject );
+			
+			
 		}
 		else if (spellType == SpellType.freeze)
 		{
-			// Make sheeps crazy.
+			enemyObject.GetComponent<Player_Movement>().Freeze(2);
+			GameObject.Destroy ( gameObject );
 		}
 		else if (spellType == SpellType.spawn)
 		{

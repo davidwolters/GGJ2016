@@ -16,6 +16,7 @@ public class Player_Spell : MonoBehaviour {
 	public GameObject playerArena;
 	public GameObject enemyArena;
 	
+	public GameObject enemyObject;
 	
 	// Update is called once per frame
 	void Update () {

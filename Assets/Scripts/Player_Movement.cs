@@ -4,14 +4,17 @@ using System.Collections;
 public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] private float moveSpeed = 10;
+	private float currentMoveSpeed = 10;
+	private float currentTurnSpeed = 10;
 	[SerializeField] private float turnSpeed = 180;
 	[SerializeField] private Camera cam;
 	[SerializeField] private PlayerType player;
-
-
+	private float oldSpeed;
+	private float oldRotateSpeed;
 	void Start ()
 	{
-		
+		currentTurnSpeed = turnSpeed;
+		currentMoveSpeed = moveSpeed;
 	}
 	
 	void Update () 
@@ -23,9 +26,29 @@ public class Player_Movement : MonoBehaviour
 
 	}
 
+	public void Freeze(float seconds)
+	{
+		
+		// S
+		oldSpeed = moveSpeed;
+		currentMoveSpeed = oldSpeed / 10;
+		
+		// R
+		oldRotateSpeed = turnSpeed;
+		currentTurnSpeed = oldRotateSpeed / 10;
+		
+		
+		Invoke ("UnFreeze", seconds);
+	}
+
+	void UnFreeze ()
+	{
+		currentMoveSpeed = oldSpeed;
+		currentTurnSpeed = oldRotateSpeed;
+	}
 	void UpdatePosition ()
 	{
-		float localMoveSpeed = moveSpeed; // this is used because if the player is shooting, we slow down the speed
+		float localMoveSpeed = currentMoveSpeed; // this is used because if the player is shooting, we slow down the speed
 		localMoveSpeed /= (Util.Shooting (player)) ? 2f : 1;
 
 		float rawMoveHor = 0;
@@ -47,10 +70,10 @@ public class Player_Movement : MonoBehaviour
 		{
 			rawMoveVer = -1;
 		} 
-		Vector3 moveVector3 = rawMoveHor * moveSpeed * Time.deltaTime * transform.forward;
+		Vector3 moveVector3 = rawMoveHor * currentMoveSpeed * Time.deltaTime * transform.forward;
 		transform.position += moveVector3;
 
-		transform.Rotate (0, -rawMoveVer * turnSpeed * Time.deltaTime, 0);
+		transform.Rotate (0, -rawMoveVer * currentTurnSpeed * Time.deltaTime, 0);
 	}
 
 	void UpdateRotation ()
