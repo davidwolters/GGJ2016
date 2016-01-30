@@ -8,6 +8,7 @@ public class Player_Webshoot : MonoBehaviour
 	[SerializeField] private float minWebScale;
 	[SerializeField] private float origShootColldown = 0.3f;
 	[SerializeField] private Transform hitBall;
+	[SerializeField] private PlayerType player = PlayerType.PLAYER1;
 
 	[HideInInspector] public static bool shooting = false;
 
@@ -18,6 +19,8 @@ public class Player_Webshoot : MonoBehaviour
 	private Renderer renderer;
 	private Renderer ballRenderer;
 
+
+
 	void Start () 
 	{
 		renderer = GetComponent <Renderer> ();
@@ -27,7 +30,7 @@ public class Player_Webshoot : MonoBehaviour
 	void Update () 
 	{
 		
-		if (((Input.GetAxisRaw (Player_Controls.shoot) > 0) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)
+		if (((Input.GetAxisRaw (Player_Controls.shoot ()) > 0) || shooting) && shootCoolDown == 0f && !Player_CarrySheep.carryingSheep && canShoot)
 		{
 			shooting = true;
 			if (transform.localScale.y <= maxWebScale)
