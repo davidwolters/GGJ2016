@@ -46,8 +46,6 @@ public class Spell_Curse : MonoBehaviour {
 	void OnCollisionEnter (Collision coll)
 	{
 		
-		print ("Collision");
-		
 		
 		if (spellType == SpellType.crazy_sheeps)
 		{
@@ -59,7 +57,6 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.spawn)
 		{
-			print ("SPAWN");
 			GameObject sheep = (GameObject) Instantiate ( enemySheep, transform.position, transform.rotation);
 			sheep.GetComponent<Sheep_Ai>().enabled = false;
 			sheep.GetComponent<Sheep_Ai>().arena = enemyArena;
