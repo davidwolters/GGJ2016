@@ -18,6 +18,8 @@ public class Player_Spell : MonoBehaviour {
 	
 	public GameObject enemyObject;
 	
+	public GameObject crusherBlock;
+	
 	// Update is called once per frame
 	void Update () {
 	

@@ -5,6 +5,7 @@ public class Spell_Curse : MonoBehaviour {
 
 	[SerializeField] private float speed = 6f;
 
+
 	[HideInInspector ]public GameObject curser;
 
 	// The enemy you want to hit.
@@ -95,7 +96,22 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.wall_block)
 		{
-			// Make sheeps crazy.
+			Mesh mesh = playerArena.GetComponent<MeshFilter>().sharedMesh;
+			//Max of arena
+			Vector3 max = TranslateBoundVec(mesh.bounds.max, playerArena.transform.lossyScale) + playerArena.transform.position;
+		
+			// Min of arena
+			Vector3 min = TranslateBoundVec(mesh.bounds.min, playerArena.transform.lossyScale) + playerArena.transform.position;
+		
+			
+			Vector3 pos = RandomVector (max, min);
+			
+			// DIRTY ALERT!
+			pos.z = 0;
+			
+			Instantiate (curser.GetComponent<Player_Spell>().crusherBlock, pos, Quaternion.identity);
+			GameObject.Destroy(this.gameObject);
+		
 		}
 	}
 	
@@ -142,4 +158,27 @@ public class Spell_Curse : MonoBehaviour {
 		
 		
 	}
+	
+	
+	
+	
+	
+	Vector3 TranslateBoundVec (Vector3 a, Vector3 b)
+	{
+		return new Vector3 (a.x * b.x, a.y * b.y, a.z * b.z);
+	}
+	
+	
+	public static Vector3 RandomVector (Vector3 start, Vector3 end)
+	{
+		Vector3 v = new Vector3();
+		v.x = Random.Range(start.x, end.x);
+		v.y = Random.Range(start.y, end.y);
+		v.z = Random.Range(start.z, end.z);
+		
+		
+		return v;
+		
+   	}
+	
 }
