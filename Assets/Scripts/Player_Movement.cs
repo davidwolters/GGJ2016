@@ -4,25 +4,28 @@ using System.Collections;
 public class Player_Movement : MonoBehaviour
 {
 	[SerializeField] private float moveSpeed = 10;
+	[SerializeField] private float turnSpeed = 180;
+	[SerializeField] private PlayerType player;
+	[SerializeField] private GameObject model;
+
+	private Animator anim;
+
 	private float currentMoveSpeed = 10;
 	private float currentTurnSpeed = 10;
-	[SerializeField] private float turnSpeed = 180;
-	[SerializeField] private Camera cam;
-	[SerializeField] private PlayerType player;
 	private float oldSpeed;
 	private float oldRotateSpeed;
 	void Start ()
 	{
 		currentTurnSpeed = turnSpeed;
 		currentMoveSpeed = moveSpeed;
+		anim = model.transform.GetComponent <Animator> ();
+
 	}
 	
 	void Update () 
 	{
 		
 		UpdatePosition ();
-		
-		//UpdateRotation (); 
 
 	}
 
@@ -70,25 +73,15 @@ public class Player_Movement : MonoBehaviour
 		{
 			rawMoveVer = -1;
 		} 
+
+		anim.SetBool ("walking", Mathf.Abs (rawMoveHor) + Mathf.Abs (rawMoveHor) != 0);
+
 		Vector3 moveVector3 = rawMoveHor * currentMoveSpeed * Time.deltaTime * transform.forward;
 		transform.position += moveVector3;
 
 		transform.Rotate (0, -rawMoveVer * currentTurnSpeed * Time.deltaTime, 0);
 	}
 
-	void UpdateRotation ()
-	{
-		
-		Ray ray = cam.ScreenPointToRay (Input.mousePosition);
-		RaycastHit hit;
-		if (Physics.Raycast (ray, out hit))
-		{
-			Vector3 lookPoint = hit.point;
-			lookPoint.y = transform.position.y;
-			transform.LookAt (lookPoint);
-		}
-		
 
-	}
 
 }

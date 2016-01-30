@@ -427,7 +427,405 @@ ModelImporter:
     animationScaleError: 0.5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: pCylinder1
+        weight: 1
+      - path: pCylinder1/transform65
+        weight: 1
+      - path: pCylinder3
+        weight: 1
+      - path: pCylinder4
+        weight: 1
+      - path: pCylinder4/transform82
+        weight: 1
+      - path: pCylinder5
+        weight: 1
+      - path: pCylinder6
+        weight: 1
+      - path: pCylinder7
+        weight: 1
+      - path: pCylinder8
+        weight: 1
+      - path: pCylinder9
+        weight: 1
+      - path: pCylinder10
+        weight: 1
+      - path: pCylinder11
+        weight: 1
+      - path: pCylinder12
+        weight: 1
+      - path: pPipe1
+        weight: 1
+      - path: pPipe1/transform87
+        weight: 1
+      - path: pPipe2
+        weight: 1
+      - path: pPipe2/transform83
+        weight: 1
+      - path: pPipe3
+        weight: 1
+      - path: pPipe3/transform89
+        weight: 1
+      - path: pPipe4
+        weight: 1
+      - path: pPyramid1
+        weight: 1
+      - path: pPyramid1/transform85
+        weight: 1
+      - path: pPyramid2
+        weight: 1
+      - path: pPyramid2/transform84
+        weight: 1
+      - path: pPyramid3
+        weight: 1
+      - path: pPyramid3/transform88
+        weight: 1
+      - path: pSphere2
+        weight: 1
+      - path: pSphere2/transform44
+        weight: 1
+      - path: pSphere3
+        weight: 1
+      - path: pSphere3/transform43
+        weight: 1
+      - path: pSphere4
+        weight: 1
+      - path: pSphere4/transform42
+        weight: 1
+      - path: pSphere5
+        weight: 1
+      - path: pSphere5/transform41
+        weight: 1
+      - path: pSphere6
+        weight: 1
+      - path: pSphere6/transform40
+        weight: 1
+      - path: pSphere7
+        weight: 1
+      - path: pSphere7/transform39
+        weight: 1
+      - path: pSphere8
+        weight: 1
+      - path: pSphere8/transform38
+        weight: 1
+      - path: pSphere9
+        weight: 1
+      - path: pSphere9/transform37
+        weight: 1
+      - path: pSphere10
+        weight: 1
+      - path: pSphere10/transform36
+        weight: 1
+      - path: pSphere11
+        weight: 1
+      - path: pSphere11/transform35
+        weight: 1
+      - path: pSphere12
+        weight: 1
+      - path: pSphere12/transform34
+        weight: 1
+      - path: pSphere13
+        weight: 1
+      - path: pSphere13/transform33
+        weight: 1
+      - path: pSphere14
+        weight: 1
+      - path: pSphere14/transform32
+        weight: 1
+      - path: pSphere15
+        weight: 1
+      - path: pSphere15/transform31
+        weight: 1
+      - path: pSphere16
+        weight: 1
+      - path: pSphere16/transform30
+        weight: 1
+      - path: pSphere17
+        weight: 1
+      - path: pSphere17/transform29
+        weight: 1
+      - path: pSphere18
+        weight: 1
+      - path: pSphere18/transform28
+        weight: 1
+      - path: pSphere19
+        weight: 1
+      - path: pSphere19/transform27
+        weight: 1
+      - path: pSphere20
+        weight: 1
+      - path: pSphere20/transform26
+        weight: 1
+      - path: pSphere21
+        weight: 1
+      - path: pSphere21/transform25
+        weight: 1
+      - path: pSphere22
+        weight: 1
+      - path: pSphere22/transform24
+        weight: 1
+      - path: pSphere23
+        weight: 1
+      - path: pSphere23/transform23
+        weight: 1
+      - path: pSphere24
+        weight: 1
+      - path: pSphere24/transform22
+        weight: 1
+      - path: pSphere25
+        weight: 1
+      - path: pSphere25/transform21
+        weight: 1
+      - path: pSphere26
+        weight: 1
+      - path: pSphere26/transform20
+        weight: 1
+      - path: pSphere27
+        weight: 1
+      - path: pSphere27/transform19
+        weight: 1
+      - path: pSphere28
+        weight: 1
+      - path: pSphere28/transform18
+        weight: 1
+      - path: pSphere29
+        weight: 1
+      - path: pSphere29/transform17
+        weight: 1
+      - path: pSphere30
+        weight: 1
+      - path: pSphere30/transform16
+        weight: 1
+      - path: pSphere31
+        weight: 1
+      - path: pSphere31/transform15
+        weight: 1
+      - path: pSphere32
+        weight: 1
+      - path: pSphere32/transform14
+        weight: 1
+      - path: pSphere33
+        weight: 1
+      - path: pSphere33/transform13
+        weight: 1
+      - path: pSphere34
+        weight: 1
+      - path: pSphere34/transform12
+        weight: 1
+      - path: pSphere35
+        weight: 1
+      - path: pSphere35/transform11
+        weight: 1
+      - path: pSphere36
+        weight: 1
+      - path: pSphere36/transform10
+        weight: 1
+      - path: pSphere37
+        weight: 1
+      - path: pSphere37/transform9
+        weight: 1
+      - path: pSphere38
+        weight: 1
+      - path: pSphere38/transform8
+        weight: 1
+      - path: pSphere39
+        weight: 1
+      - path: pSphere39/transform7
+        weight: 1
+      - path: pSphere40
+        weight: 1
+      - path: pSphere40/transform6
+        weight: 1
+      - path: pSphere41
+        weight: 1
+      - path: pSphere41/transform5
+        weight: 1
+      - path: pSphere42
+        weight: 1
+      - path: pSphere42/transform4
+        weight: 1
+      - path: pSphere43
+        weight: 1
+      - path: pSphere43/transform3
+        weight: 1
+      - path: pSphere44
+        weight: 1
+      - path: pSphere44/transform2
+        weight: 1
+      - path: pSphere45
+        weight: 1
+      - path: pSphere45/transform1
+        weight: 1
+      - path: pSphere46
+        weight: 1
+      - path: pSphere46/transform81
+        weight: 1
+      - path: pSphere47
+        weight: 1
+      - path: pSphere47/transform80
+        weight: 1
+      - path: pSphere48
+        weight: 1
+      - path: pSphere48/transform79
+        weight: 1
+      - path: pSphere49
+        weight: 1
+      - path: pSphere49/transform78
+        weight: 1
+      - path: pSphere50
+        weight: 1
+      - path: pSphere50/transform77
+        weight: 1
+      - path: pSphere51
+        weight: 1
+      - path: pSphere51/transform76
+        weight: 1
+      - path: pSphere52
+        weight: 1
+      - path: pSphere52/transform75
+        weight: 1
+      - path: pSphere53
+        weight: 1
+      - path: pSphere53/transform74
+        weight: 1
+      - path: pSphere54
+        weight: 1
+      - path: pSphere54/transform73
+        weight: 1
+      - path: pSphere55
+        weight: 1
+      - path: pSphere55/transform72
+        weight: 1
+      - path: pSphere56
+        weight: 1
+      - path: pSphere56/transform71
+        weight: 1
+      - path: pSphere57
+        weight: 1
+      - path: pSphere57/transform70
+        weight: 1
+      - path: pSphere58
+        weight: 1
+      - path: pSphere58/transform69
+        weight: 1
+      - path: pSphere59
+        weight: 1
+      - path: pSphere59/transform68
+        weight: 1
+      - path: pSphere60
+        weight: 1
+      - path: pSphere60/transform67
+        weight: 1
+      - path: pSphere61
+        weight: 1
+      - path: pSphere61/transform66
+        weight: 1
+      - path: pSphere62
+        weight: 1
+      - path: pSphere62/transform86
+        weight: 1
+      - path: pTorus1
+        weight: 1
+      - path: pTorus1/transform62
+        weight: 1
+      - path: pTorus2
+        weight: 1
+      - path: pTorus2/transform61
+        weight: 1
+      - path: pTorus3
+        weight: 1
+      - path: pTorus3/transform60
+        weight: 1
+      - path: pTorus4
+        weight: 1
+      - path: pTorus4/transform59
+        weight: 1
+      - path: pTorus5
+        weight: 1
+      - path: pTorus5/transform58
+        weight: 1
+      - path: pTorus6
+        weight: 1
+      - path: pTorus6/transform57
+        weight: 1
+      - path: pTorus7
+        weight: 1
+      - path: pTorus7/transform56
+        weight: 1
+      - path: pTorus8
+        weight: 1
+      - path: pTorus8/transform55
+        weight: 1
+      - path: pTorus9
+        weight: 1
+      - path: pTorus9/transform54
+        weight: 1
+      - path: pTorus10
+        weight: 1
+      - path: pTorus10/transform53
+        weight: 1
+      - path: pTorus11
+        weight: 1
+      - path: pTorus11/transform52
+        weight: 1
+      - path: pTorus12
+        weight: 1
+      - path: pTorus12/transform51
+        weight: 1
+      - path: pTorus13
+        weight: 1
+      - path: pTorus13/transform50
+        weight: 1
+      - path: pTorus14
+        weight: 1
+      - path: pTorus14/transform49
+        weight: 1
+      - path: pTorus15
+        weight: 1
+      - path: pTorus15/transform48
+        weight: 1
+      - path: pTorus16
+        weight: 1
+      - path: pTorus16/transform47
+        weight: 1
+      - path: pTorus17
+        weight: 1
+      - path: pTorus17/transform46
+        weight: 1
+      - path: pTorus18
+        weight: 1
+      - path: pTorus18/transform45
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 1
     isReadable: 1
   meshes:
     lODScreenPercentages: []

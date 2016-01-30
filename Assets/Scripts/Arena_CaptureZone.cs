@@ -21,9 +21,13 @@ public class Arena_CaptureZone : MonoBehaviour {
 	{
 		if (coll.gameObject.tag.Equals(target))
 		{
+			
 			points.Point += 1;
 			ExplodeEffect(coll.transform.position);
-			GameObject.Destroy(coll.gameObject);
+
+			coll.gameObject.GetComponent <Animator> ().enabled = true;
+			coll.gameObject.GetComponent <Animator> ().SetTrigger ("Dead");
+			//GameObject.Destroy(coll.gameObject);
 		}
 	}
 	
