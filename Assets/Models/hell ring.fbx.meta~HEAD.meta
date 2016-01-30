@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Models/hell ring.fbx.meta~HEAD.meta
 guid: f2171fb268bd100428d0e737d8592423
 timeCreated: 1454146828
+=======
+guid: 5aa8a585af669594cb2b710563d050ee
+timeCreated: 1454146302
+>>>>>>> 91f4493aa48b993589180092b03bf6403fe5a52f:Assets/Models/hell ring.fbx.meta~HEAD.meta
 licenseType: Free
 DefaultImporter:
   userData: 

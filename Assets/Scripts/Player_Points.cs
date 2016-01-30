@@ -12,7 +12,6 @@ public class Player_Points : MonoBehaviour {
 	{
 		get
 		{
-			
 			return this.point;
 		}
 		set
