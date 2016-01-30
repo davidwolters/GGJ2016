@@ -26,13 +26,13 @@ public class Player_Spell : MonoBehaviour {
 		}
 		*/
 		if (Input.GetKey(spell1))
-			DoSpell(1);
+			DoSpell(0);
 		if (Input.GetKey(spell2))
-			DoSpell(2);
+			DoSpell(1);
 		if (Input.GetKey(spell3))
-			DoSpell(3);
+			DoSpell(2);
 		if (Input.GetKey(spell4))
-			DoSpell(4);
+			DoSpell(3);
 			
 	}
 	void DoSpell(int spell)

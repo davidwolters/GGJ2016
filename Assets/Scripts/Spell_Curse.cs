@@ -30,6 +30,10 @@ public class Spell_Curse : MonoBehaviour {
 	
 	void OnCollisionEnter (Collision coll)
 	{
+		
+		print ("Collision");
+		
+		
 		if (spellType == SpellType.crazy_sheeps)
 		{
 			// Make sheeps crazy.
@@ -44,7 +48,9 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.spawn)
 		{
-			Instantiate ( Resources.Load ("Sheep"));
+			print ("SPAWN");
+			Instantiate ( Resources.Load ("Sheep2"), transform.position, transform.rotation);
+			GameObject.Destroy(this);
 		}
 		else if (spellType == SpellType.wall_block)
 		{
@@ -62,6 +68,7 @@ public class Spell_Curse : MonoBehaviour {
 	
 	public void SetCurseById( int id)
 	{
+		print ("SET CURSE!" + id );
 		if (id == 0)
 			spellType = SpellType.crazy_sheeps;
 		if (id == 1)
