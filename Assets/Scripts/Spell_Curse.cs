@@ -111,7 +111,7 @@ public class Spell_Curse : MonoBehaviour {
 	{
 		Player_Points points = curser.GetComponent<Player_Spell>().points;
 		print ("Mana is: "+points.mana);
-		if (id == 0 && points.mana >= 1)
+		if (id == 0 && points.mana >= 5)
 		{
 			points.mana -= 1;
 			spellType = SpellType.crazy_sheeps;
@@ -123,7 +123,7 @@ public class Spell_Curse : MonoBehaviour {
 			spellType = SpellType.freeze;
 			return;
 		}
-		else if (id == 2 && points.mana >= 5)
+		else if (id == 2 && points.mana >= 1)
 		{
 			points.mana -= 5;
 			spellType = SpellType.spawn;
