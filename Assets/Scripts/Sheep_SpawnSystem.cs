@@ -22,6 +22,7 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	{
 		if (currentTimer > 0)
 		{
+			 
 			currentTimer -= Time.deltaTime;
 			if (currentTimer <= 0)
 			{
@@ -41,11 +42,14 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	void SpawnSheep ()
 	{
 		int index = GetSpawn ();
+
 		Instantiate (spawnObjects[index], spawnPoints[RevertSpawn (index)].transform.position, spawnPoints[GetSpawn ()].transform.rotation);
+		print ("SPAWN OBJECT"); 
 	}
 
 	int GetSpawn (){
 		return Random.Range (0, 2);
+
 	}
 
 	int RevertSpawn (int i)
