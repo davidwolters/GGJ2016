@@ -14,7 +14,11 @@ public class Sheep_Ai : MonoBehaviour {
 	private NavMeshAgent agent;
 	
 	// The filed we will be navigating on.
+<<<<<<< HEAD
 	[HideInInspector] public GameObject arena;
+=======
+	public GameObject arena;
+>>>>>>> 80431d2777cd8e654a07d26cfc2503f21adf9679
 	
 	// The max and min of arena.
 	private Mesh mesh;

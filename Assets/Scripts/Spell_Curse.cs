@@ -5,8 +5,17 @@ public class Spell_Curse : MonoBehaviour {
 
 	[SerializeField] private float speed = 6f;
 
+	[HideInInspector ]public GameObject curser;
+
+	// The enemy you want to hit.
+	private GameObject enemySheep;
 	
+	// The one who threw this curse.
+	private GameObject playerSheep;
 	
+	private GameObject enemyArena;
+	
+	private GameObject playerArena;
 	
 	
 	public SpellType spellType;
@@ -25,6 +34,12 @@ public class Spell_Curse : MonoBehaviour {
 	void Start () {
 	
 		rg = GetComponent<Rigidbody>();
+		
+		playerSheep = curser.GetComponent<Player_Spell>().playerSheep;
+		enemySheep = curser.GetComponent<Player_Spell>().enemySheep;
+		playerArena = curser.GetComponent<Player_Spell>().playerArena;
+		enemyArena = curser.GetComponent<Player_Spell>().enemyArena;
+		
 	
 	}
 	
@@ -44,13 +59,13 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.spawn)
 		{
-			// Make sheeps crazy.
-		}
-		else if (spellType == SpellType.spawn)
-		{
 			print ("SPAWN");
-			Instantiate ( Resources.Load ("Sheep2"), transform.position, transform.rotation);
-			GameObject.Destroy(this);
+			GameObject sheep = (GameObject) Instantiate ( enemySheep, transform.position, transform.rotation);
+			sheep.GetComponent<Sheep_Ai>().enabled = false;
+			sheep.GetComponent<Sheep_Ai>().arena = enemyArena;
+			sheep.GetComponent<Sheep_Ai>().enabled = true;
+			GameObject.Destroy(this.gameObject);
+			
 		}
 		else if (spellType == SpellType.wall_block)
 		{
