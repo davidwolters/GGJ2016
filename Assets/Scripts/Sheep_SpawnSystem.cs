@@ -21,7 +21,6 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		print (currentTimer); 
 		if (currentTimer > 0)
 		{
 			 

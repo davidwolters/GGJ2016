@@ -10,6 +10,13 @@ public class Player_Spell : MonoBehaviour {
 	private int spell;
 	[SerializeField] private Player_Points points;
 
+	public GameObject playerSheep;
+	public GameObject enemySheep;
+
+	public GameObject playerArena;
+	public GameObject enemyArena;
+	
+	
 	// Update is called once per frame
 	void Update () {
 	
@@ -43,5 +50,7 @@ public class Player_Spell : MonoBehaviour {
 		Spell_Curse spell_curse = curse.GetComponent<Spell_Curse>();
 		
 		spell_curse.SetCurseById (spell);
+		
+		spell_curse.curser = this.gameObject;
 	}
 }
