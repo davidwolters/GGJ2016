@@ -12,10 +12,16 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	[SerializeField] private float maxSpawnTime;
 	[SerializeField] private int maxSidesInRow = 2;
 	[SerializeField] private int maxSheepInGame = 20;
+	[SerializeField] private int minimumMaxSheepInGame = 5;
+	[SerializeField] private float timeUntilLevelUp = 5;
+	[SerializeField] private int levelUpSheepDecreaseAmount = 1;
+
+	private float levelUpTimer;
 
 	private List <GameObject> spawnedSheep = new List <GameObject> ();
 	private int sheepInGame = 0;
 
+	private int currentMaxSheepInGame = 0;
 
 	float currentTimer = 0f;
 
@@ -26,6 +32,8 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	{
 		currentTimer = GetSpawnTime ();
 		currentSide = Random.Range (0, 2);
+		currentMaxSheepInGame = maxSheepInGame;
+		levelUpTimer = timeUntilLevelUp;
 	}
 	
 	// Update is called once per frame
@@ -42,15 +50,24 @@ public class Sheep_SpawnSystem : MonoBehaviour
 			currentTimer -= Time.deltaTime;
 			if (currentTimer <= 0)
 			{
-				if (sheepInGame < maxSheepInGame)
+				if (sheepInGame < currentMaxSheepInGame)
 				{
 					SpawnSheep ();
-					currentTimer = GetSpawnTime ();
 				}
+				currentTimer = GetSpawnTime ();
 
 			}
 		}
+		levelUpTimer -= Time.deltaTime;
+		if (levelUpTimer <= 0)
+		{
+			if (currentMaxSheepInGame > minimumMaxSheepInGame)
+			{
+				currentMaxSheepInGame -= levelUpSheepDecreaseAmount;
+				levelUpTimer = timeUntilLevelUp;
+			}
 
+		}
 	}
 
 
@@ -127,20 +144,9 @@ public class Sheep_SpawnSystem : MonoBehaviour
 
 	void GetSheepInGame ()
 	{
-		int sheep = 0;
-		foreach (GameObject s in spawnedSheep)
-		{
-			if (s != null)
-			{
-				sheep++;
-			} else
-			{
-				spawnedSheep.Remove (s);
-			}
-		}
-
-		sheepInGame = sheep;
-
+		GameObject[] sheep1 = GameObject.FindGameObjectsWithTag("Player1Sheep");
+		GameObject[] sheep2 = GameObject.FindGameObjectsWithTag("Player2Sheep");
+		sheepInGame = sheep1.Length + sheep2.Length;
 	}
 
 }
