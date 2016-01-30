@@ -66,15 +66,25 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (spellType == SpellType.freeze)
 		{
-			enemyObject.GetComponent<Player_Movement>().Freeze(2);
+			enemyObject.GetComponent<Player_Movement>().Freeze(7);
 			GameObject.Destroy ( gameObject );
 		}
 		else if (spellType == SpellType.spawn)
 		{
-			GameObject sheep = (GameObject) Instantiate ( enemySheep, transform.position, transform.rotation);
+		
+			Mesh mesh = enemyArena.GetComponent<MeshFilter>().sharedMesh;
+			
+			Vector3 center = (mesh.bounds.center) + enemyArena.transform.position;
+			
+		
+			GameObject sheep = (GameObject) Instantiate ( enemySheep, center, transform.rotation);
+			
+			
 			sheep.GetComponent<Sheep_Ai>().enabled = false;
 			sheep.GetComponent<Sheep_Ai>().arena = enemyArena;
 			sheep.GetComponent<Sheep_Ai>().enabled = true;
+			
+			
 			GameObject.Destroy(this.gameObject);
 			
 		}
