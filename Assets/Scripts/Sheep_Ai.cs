@@ -40,6 +40,14 @@ public class Sheep_Ai : MonoBehaviour {
 		// Begin move cycle.
 		agent.SetDestination(dest);
 	}
+
+	void OnEnable ()
+	{
+		print ("ENABLICUS");
+		DoNewPos ();
+		agent.SetDestination(dest);
+
+	}
 	
 	void DoNewPos ()
 	{
