@@ -141,7 +141,7 @@ public class Spell_Curse : MonoBehaviour {
 		}
 		else if (id == 2 && points.mana >= 1)
 		{
-			points.mana -= 5;
+			points.mana -= 1;
 			spellType = SpellType.spawn;
 			return;
 		}
