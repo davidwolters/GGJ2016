@@ -40,9 +40,7 @@ public class Player_Spell : MonoBehaviour {
 			DoSpell(1);
 		if (Input.GetKeyDown(spell3))
 			DoSpell(3);
-		if (Input.GetKeyDown(spell4));
-			//DoSpell(3);
-			
+	
 	}
 	
 	
