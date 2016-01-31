@@ -32,15 +32,16 @@ public class Player_Spell : MonoBehaviour {
 	}
 	
 	// For every key.
-	void Update () {
+	void FixedUpdate () 
+	{
 		if (Input.GetKeyDown(spell1))
 			DoSpell(0);
 		if (Input.GetKeyDown(spell2))
 			DoSpell(1);
 		if (Input.GetKeyDown(spell3))
-			DoSpell(2);
-		if (Input.GetKeyDown(spell4))
 			DoSpell(3);
+		if (Input.GetKeyDown(spell4));
+			//DoSpell(3);
 			
 	}
 	
@@ -70,9 +71,12 @@ public class Player_Spell : MonoBehaviour {
 			{
 				foreach (GameObject element in sheeps)
 				{
-					if (element)
+					if (element.activeSelf && element != null)
 					{
-						element.GetComponent <Sheep_Ai> ().Phase (7);
+						if (element.GetComponent <Sheep_Ai> () != null)
+						{
+							element.GetComponent <Sheep_Ai> ().Phase (7);
+						}
 					}
 				}
 			}
@@ -133,6 +137,7 @@ public class Player_Spell : MonoBehaviour {
 		spellType = SpellType.unknown;
 		if (id == 0 && points.mana >= 40)
 		{
+			print (HasSheep ()); 
 			if (HasSheep ())
 			{
 				points.mana -= 40;

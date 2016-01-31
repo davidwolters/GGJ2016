@@ -35,7 +35,9 @@ public class Sheep_Ai : MonoBehaviour {
 	[SerializeField] private float lightSpeed = 1f;
 
 	[SerializeField] private float targetRiseY = 20f;
-	
+
+	[SerializeField] private ParticleSystem ps;
+
 	// The max and min of arena.
 	private Mesh mesh;
 
@@ -55,7 +57,6 @@ public class Sheep_Ai : MonoBehaviour {
 	
 	void Start ()
 	{
-		
 		
 		// Get referacnes.
 		agent = gameObject.GetComponent <NavMeshAgent> ();
@@ -127,12 +128,14 @@ public class Sheep_Ai : MonoBehaviour {
 		GetComponent <Rigidbody> ().isKinematic = true;
 		
 		gameObject.GetComponent<NavMeshAgent>().speed = phaseSpeed;
+		ps.loop = true;
+		ps.Play ();
 		
 	}
 	
 	void Update ()
 	{
-		
+		ps.transform.position = transform.position;
 		if (sacrified)
 		{
 			light.intensity += lightSpeed * Time.deltaTime;
@@ -168,6 +171,8 @@ public class Sheep_Ai : MonoBehaviour {
 
 				if (phaseSeconds <= 0)
 				{
+					if (ps.isPlaying)
+						ps.Stop ();
 					GetComponent <Rigidbody> ().isKinematic = false;
 					agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
 					gameObject.GetComponent<NavMeshAgent>().speed = speed;

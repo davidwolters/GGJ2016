@@ -924,21 +924,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &127404
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 423458}
-  m_Layer: 0
-  m_Name: pTorus13
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &127694
 GameObject:
   m_ObjectHideFlags: 1
@@ -1281,21 +1266,6 @@ GameObject:
   - 4: {fileID: 407732}
   m_Layer: 0
   m_Name: pSphere51
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &139688
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 439812}
-  m_Layer: 0
-  m_Name: transform50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3327,19 +3297,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 487330}
   m_RootOrder: 10
---- !u!4 &423458
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 127404}
-  m_LocalRotation: {x: -0.4876887, y: -0.4798595, z: -0.5198568, w: -0.51151115}
-  m_LocalPosition: {x: 0.012012528, y: 0.077571, z: -0.04950213}
-  m_LocalScale: {x: 1.9999999, y: 1, z: 2}
-  m_Children:
-  - {fileID: 439812}
-  m_Father: {fileID: 487330}
-  m_RootOrder: 92
 --- !u!4 &423662
 Transform:
   m_ObjectHideFlags: 1
@@ -3464,7 +3421,7 @@ Transform:
   m_Children:
   - {fileID: 474098}
   m_Father: {fileID: 487330}
-  m_RootOrder: 94
+  m_RootOrder: 93
 --- !u!4 &431216
 Transform:
   m_ObjectHideFlags: 1
@@ -3636,18 +3593,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 479668}
-  m_RootOrder: 0
---- !u!4 &439812
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 139688}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 423458}
   m_RootOrder: 0
 --- !u!4 &440106
 Transform:
@@ -4321,7 +4266,7 @@ Transform:
   m_Children:
   - {fileID: 445846}
   m_Father: {fileID: 487330}
-  m_RootOrder: 95
+  m_RootOrder: 94
 --- !u!4 &471104
 Transform:
   m_ObjectHideFlags: 1
@@ -4399,7 +4344,7 @@ Transform:
   m_Children:
   - {fileID: 447956}
   m_Father: {fileID: 487330}
-  m_RootOrder: 97
+  m_RootOrder: 96
 --- !u!4 &473594
 Transform:
   m_ObjectHideFlags: 1
@@ -4560,7 +4505,7 @@ Transform:
   m_Children:
   - {fileID: 404200}
   m_Father: {fileID: 487330}
-  m_RootOrder: 96
+  m_RootOrder: 95
 --- !u!4 &479668
 Transform:
   m_ObjectHideFlags: 1
@@ -4807,7 +4752,7 @@ Transform:
   m_GameObject: {fileID: 115594}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071067}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.51510656, y: 0.51510626, z: 0.00010302126}
+  m_LocalScale: {x: 0.51510656, y: 0.5151062, z: 0.00010302123}
   m_Children: []
   m_Father: {fileID: 487330}
   m_RootOrder: 0
@@ -4913,7 +4858,6 @@ Transform:
   - {fileID: 415582}
   - {fileID: 420768}
   - {fileID: 490838}
-  - {fileID: 423458}
   - {fileID: 491322}
   - {fileID: 430586}
   - {fileID: 470698}
@@ -5109,7 +5053,7 @@ Transform:
   m_Children:
   - {fileID: 438268}
   m_Father: {fileID: 487330}
-  m_RootOrder: 93
+  m_RootOrder: 92
 --- !u!4 &493010
 Transform:
   m_ObjectHideFlags: 1
@@ -5589,8 +5533,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.08231497, y: 0.15221734, z: 0.16481541}
-  m_Center: {x: 0.009405503, y: 0.079410814, z: 0.001406627}
+  m_Size: {x: 0.07928588, y: 0.15322705, z: 0.16650683}
+  m_Center: {x: 0.012939561, y: 0.079915665, z: 0.0022586645}
 --- !u!95 &9526746
 Animator:
   serializedVersion: 3
@@ -5691,7 +5635,7 @@ MonoBehaviour:
   phaseDeceleration: 1e+10
   closeEnoughMeters: 3
   sacrified: 0
-  arena: {fileID: 110468, guid: cceabcff24b254ba889181326564a8ef, type: 2}
+  arena: {fileID: 189838, guid: 382aa387c102e40a4abd5c6d0d90b1b8, type: 2}
   phaseSeconds: 0
   phaseSpeed: 200
   speed: 20
@@ -5699,6 +5643,7 @@ MonoBehaviour:
   riseTurnSpeed: 100
   lightSpeed: 0.1
   targetRiseY: 40
+  ps: {fileID: 19804000, guid: 6cf5d5a1de0fc4a01814903c7a417f73, type: 2}
   mandatoryDistance: 2
 --- !u!195 &19504926
 NavMeshAgent:
@@ -5758,6 +5703,15 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: phaseAcceleration
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 19804000, guid: 6cf5d5a1de0fc4a01814903c7a417f73,
+        type: 2}
+    - target: {fileID: 0}
+      propertyPath: m_TagString
+      value: Player2Sheep
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

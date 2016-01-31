@@ -3186,6 +3186,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3d433d766f55d44b48156b04284bbdcf, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1470889762
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1470889763}
+  m_Layer: 0
+  m_Name: pTorus13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1470889763
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1470889762}
+  m_LocalRotation: {x: -0.4876887, y: -0.4798595, z: -0.5198568, w: -0.51151115}
+  m_LocalPosition: {x: 1.6807011, y: 16.07296, z: -7.2605042}
+  m_LocalScale: {x: 19.413467, y: 9.706736, z: 19.413456}
+  m_Children:
+  - {fileID: 1769070424}
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
 --- !u!1001 &1491089715
 Prefab:
   m_ObjectHideFlags: 0
@@ -3395,6 +3423,33 @@ GameObject:
 Transform:
   m_PrefabParentObject: {fileID: 464116, guid: 382aa387c102e40a4abd5c6d0d90b1b8, type: 2}
   m_PrefabInternal: {fileID: 34624279}
+--- !u!1 &1769070423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1769070424}
+  m_Layer: 0
+  m_Name: transform50
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1769070424
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1769070423}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1470889763}
+  m_RootOrder: 0
 --- !u!198 &1796493140 stripped
 ParticleSystem:
   m_PrefabParentObject: {fileID: 19804000, guid: 6cf9a8e9d8eb041d1bdc0e6209da387a,
