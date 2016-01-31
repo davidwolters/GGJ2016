@@ -130,7 +130,7 @@ public class Sheep_Ai : MonoBehaviour {
 	public void Phase (int seconds)
 	{
 		phaseSeconds = seconds;
-		
+		GetComponent <Rigidbody> ().isKinematic = true;
 		
 		gameObject.GetComponent<NavMeshAgent>().speed = phaseSpeed;
 		
@@ -174,6 +174,7 @@ public class Sheep_Ai : MonoBehaviour {
 
 				if (phaseSeconds <= 0)
 				{
+					GetComponent <Rigidbody> ().isKinematic = false;
 					agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
 					gameObject.GetComponent<NavMeshAgent>().speed = speed;
 

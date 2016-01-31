@@ -33,13 +33,13 @@ public class Player_Spell : MonoBehaviour {
 	
 	// For every key.
 	void Update () {
-		if (Input.GetKey(spell1))
+		if (Input.GetKeyDown(spell1))
 			DoSpell(0);
-		if (Input.GetKey(spell2))
+		if (Input.GetKeyDown(spell2))
 			DoSpell(1);
-		if (Input.GetKey(spell3))
+		if (Input.GetKeyDown(spell3))
 			DoSpell(2);
-		if (Input.GetKey(spell4))
+		if (Input.GetKeyDown(spell4))
 			DoSpell(3);
 			
 	}
@@ -56,97 +56,105 @@ public class Player_Spell : MonoBehaviour {
 	{
 	
 		if (spellType == SpellType.crazy_sheeps)
+		{
+			// Make sheeps crazy.
+			
+			GameObject [] sheeps = GameObject.FindGameObjectsWithTag(playerSheep.transform.tag);
+			sheeps [0] = null;
+			sheeps [1] = null;
+			sheeps [2] = null;
+
+
+			print (sheeps.Length + ", : " + playerSheep.tag);
+			if (sheeps.Length > 0 + 3)
 			{
-				// Make sheeps crazy.
-				
-				GameObject [] sheeps = GameObject.FindGameObjectsWithTag(playerSheep.tag);
-				
 				foreach (GameObject element in sheeps)
 				{
-					// For each
-					element.GetComponent<Sheep_Ai>().Phase(2);
+					if (element)
+					{
+						element.GetComponent <Sheep_Ai> ().Phase (7);
+					}
 				}
-				
-				return;
-				
-				
 			}
-			else if (spellType == SpellType.freeze)
-			{
-				
-				enemyObject.GetComponent<Player_Movement>().Freeze(7);
-				return;
-			}
-			else if (spellType == SpellType.spawn)
-			{
+
+			return;
 			
-				print ("SPAWN");
-				Mesh mesh = enemyGround.GetComponent<MeshFilter>().sharedMesh;
-				
-				Vector3 center = (mesh.bounds.center) + enemyGround.transform.position;
-				
 			
-				GameObject sheep = (GameObject) Instantiate ( enemySheep, center, transform.rotation);
-				
-				
-				sheep.GetComponent<Sheep_Ai>().enabled = false;
-				sheep.GetComponent<Sheep_Ai>().arena = enemyGround;
-				sheep.GetComponent<Sheep_Ai>().enabled = true;
-				
-				
-				return;
-				
-			}
-			else if (spellType == SpellType.wall_block)
-			{
-				Mesh mesh = playerGround.GetComponent<MeshFilter>().sharedMesh;
-				//Max of arena
-				Vector3 max = TranslateBoundVec(mesh.bounds.max, playerGround.transform.lossyScale) + playerGround.transform.position;
+		}
+		else if (spellType == SpellType.freeze)
+		{
 			
-				// Min of arena
-				Vector3 min = TranslateBoundVec(mesh.bounds.min, playerGround.transform.lossyScale) + playerGround.transform.position;
-			
-				
-				Vector3 pos = RandomVector (max, min);
-				
-				// DIRTY ALERT!
-				pos.z = 0;
-				
-				Instantiate (crusherBlock, pos, Quaternion.identity);
-				return;
+			enemyObject.GetComponent<Player_Movement>().Freeze(7);
+			return;
+		}
+		else if (spellType == SpellType.spawn)
+		{
 		
-			}
+			print ("SPAWN");
+			Mesh mesh = enemyGround.GetComponent<MeshFilter>().sharedMesh;
+			
+			Vector3 center = (mesh.bounds.center) + enemyGround.transform.position;
+			
+		
+			GameObject sheep = (GameObject) Instantiate ( enemySheep, center, transform.rotation);
+			
+			
+			sheep.GetComponent<Sheep_Ai>().enabled = false;
+			sheep.GetComponent<Sheep_Ai>().arena = enemyGround;
+			sheep.GetComponent<Sheep_Ai>().enabled = true;
+			
+			
+			return;
+			
+		}
+		else if (spellType == SpellType.wall_block)
+		{
+			Mesh mesh = playerGround.GetComponent<MeshFilter>().sharedMesh;
+			//Max of arena
+			Vector3 max = TranslateBoundVec(mesh.bounds.max, playerGround.transform.lossyScale) + playerGround.transform.position;
+		
+			// Min of arena
+			Vector3 min = TranslateBoundVec(mesh.bounds.min, playerGround.transform.lossyScale) + playerGround.transform.position;
+		
+			
+			Vector3 pos = RandomVector (max, min);
+
+			pos.y = 30;
+			
+			Instantiate (crusherBlock, pos, Quaternion.identity);
+			return;
+	
+		}
 	}
 	
 	// Set the curse/spell by id.	
-	public void SetCurseById( int id)
+	public void SetCurseById(int id)
 	{
-		print ("Mana is: "+points.mana);
-		if (id == 0 && points.mana >= 5)
+		spellType = SpellType.unknown;
+		if (id == 0 && points.mana >= 40)
 		{
-			points.mana -= 1;
-			spellType = SpellType.crazy_sheeps;
-			return;
+			if (HasSheep ())
+			{
+				points.mana -= 40;
+				spellType = SpellType.crazy_sheeps;
+			}
 		}
-		else if (id == 1 && points.mana >= 3)
+		else if (id == 1 && points.mana >= 30)
 		{
-			points.mana -= 3;
+			points.mana -= 30;
 			spellType = SpellType.freeze;
-			return;
 		}
-		else if (id == 2 && points.mana >= 1)
+		else if (id == 2 && points.mana >= 10)
 		{
-			points.mana -= 1;
+			points.mana -= 10;
 			spellType = SpellType.spawn;
-			return;
 		}
-		else if (id == 3 && points.mana >= 3)
+		else if (id == 3 && points.mana >= 30)
 		{
-			points.mana -= 3;
+			points.mana -= 30;
 			spellType = SpellType.wall_block;
-			return;
 		}
-		
+		print ("Mana is: " + points.mana);
 	}
 	
 	// Good functions!
@@ -165,7 +173,14 @@ public class Player_Spell : MonoBehaviour {
 		
 		
 		return v;
-		
    	}
+
+
+	bool HasSheep ()
+	{
+		GameObject[] sheep = GameObject.FindGameObjectsWithTag (playerSheep.tag);
+		print (sheep.Length);
+		return sheep.Length - 3 > 0;
+	}
 	
 }

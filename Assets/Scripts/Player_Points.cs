@@ -4,12 +4,13 @@ using UnityEngine.UI;
 public class Player_Points : MonoBehaviour {
 
 
-	public int mana = 10;
+	public int mana = 100;
 
-	private Text text;
-	[SerializeField] private GameObject TextObject;
+	[SerializeField] private Text scoreText;
+	[SerializeField] private Text manaText;
 
 	[SerializeField] private int point;
+
 	[HideInInspector] public int Point
 	{
 		get
@@ -18,22 +19,24 @@ public class Player_Points : MonoBehaviour {
 		}
 		set
 		{
-			mana += (value * 2);
-			text.text = this.point.ToString();
+			mana += (value * 20);
+			if (mana > 100)
+				mana = 100;
 			this.point = value;
 			print(Point);
 		}
 	}
 
+
 	// Use this for initialization
 	void Start ()
 	{
 	
-		text = TextObject.GetComponent<Text>();
-	
+		
 	}
 	void OnGUI()
 	{
-		text.text = this.point.ToString();
+		scoreText.text = this.point.ToString();
+		manaText.text = this.mana.ToString ();
 	}
 }
