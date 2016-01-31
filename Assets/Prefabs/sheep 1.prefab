@@ -1532,21 +1532,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &158476
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 499718}
-  m_Layer: 0
-  m_Name: pTorus13
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
 --- !u!1 &158930
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,21 +1724,6 @@ GameObject:
   - 4: {fileID: 477336}
   m_Layer: 0
   m_Name: transform70
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &165676
-GameObject:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 425104}
-  m_Layer: 0
-  m_Name: transform50
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2931,7 +2901,6 @@ Transform:
   - {fileID: 483954}
   - {fileID: 421360}
   - {fileID: 434810}
-  - {fileID: 499718}
   - {fileID: 478346}
   - {fileID: 438390}
   - {fileID: 491326}
@@ -3484,18 +3453,6 @@ Transform:
   - {fileID: 463770}
   m_Father: {fileID: 402822}
   m_RootOrder: 68
---- !u!4 &425104
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 165676}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 499718}
-  m_RootOrder: 0
 --- !u!4 &425236
 Transform:
   m_ObjectHideFlags: 1
@@ -3833,7 +3790,7 @@ Transform:
   m_Children:
   - {fileID: 408536}
   m_Father: {fileID: 402822}
-  m_RootOrder: 94
+  m_RootOrder: 93
 --- !u!4 &438484
 Transform:
   m_ObjectHideFlags: 1
@@ -4010,7 +3967,7 @@ Transform:
   m_Children:
   - {fileID: 449082}
   m_Father: {fileID: 402822}
-  m_RootOrder: 97
+  m_RootOrder: 96
 --- !u!4 &444374
 Transform:
   m_ObjectHideFlags: 1
@@ -4492,7 +4449,7 @@ Transform:
   m_Children:
   - {fileID: 490624}
   m_Father: {fileID: 402822}
-  m_RootOrder: 96
+  m_RootOrder: 95
 --- !u!4 &471042
 Transform:
   m_ObjectHideFlags: 1
@@ -4691,7 +4648,7 @@ Transform:
   m_Children:
   - {fileID: 460676}
   m_Father: {fileID: 402822}
-  m_RootOrder: 93
+  m_RootOrder: 92
 --- !u!4 &478400
 Transform:
   m_ObjectHideFlags: 1
@@ -5004,7 +4961,7 @@ Transform:
   m_Children:
   - {fileID: 461778}
   m_Father: {fileID: 402822}
-  m_RootOrder: 95
+  m_RootOrder: 94
 --- !u!4 &492844
 Transform:
   m_ObjectHideFlags: 1
@@ -5183,19 +5140,6 @@ Transform:
   - {fileID: 463480}
   m_Father: {fileID: 402822}
   m_RootOrder: 50
---- !u!4 &499718
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 158476}
-  m_LocalRotation: {x: -0.4876887, y: -0.4798595, z: -0.5198568, w: -0.51151115}
-  m_LocalPosition: {x: 0.012012528, y: 0.077571, z: -0.04950213}
-  m_LocalScale: {x: 1.9999999, y: 1, z: 2}
-  m_Children:
-  - {fileID: 425104}
-  m_Father: {fileID: 402822}
-  m_RootOrder: 92
 --- !u!4 &499722
 Transform:
   m_ObjectHideFlags: 1
@@ -5699,6 +5643,7 @@ MonoBehaviour:
   riseTurnSpeed: 100
   lightSpeed: 0.1
   targetRiseY: 40
+  ps: {fileID: 19804000, guid: 6cf5d5a1de0fc4a01814903c7a417f73, type: 2}
   mandatoryDistance: 2
 --- !u!195 &19544910
 NavMeshAgent:
@@ -5759,6 +5704,11 @@ Prefab:
       propertyPath: phaseSeconds
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: ps
+      value: 
+      objectReference: {fileID: 19804000, guid: 6cf5d5a1de0fc4a01814903c7a417f73,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 153882}
