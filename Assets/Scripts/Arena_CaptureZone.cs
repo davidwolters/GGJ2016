@@ -21,15 +21,10 @@ public class Arena_CaptureZone : MonoBehaviour {
 	{
 		if (coll.gameObject.tag.Equals(target))
 		{
-			
 			points.Point += 1;
 			ExplodeEffect(coll.transform.position);
-
-			coll.gameObject.GetComponent <Animator> ().enabled = true;
-			coll.gameObject.GetComponent <Animator> ().SetTrigger ("Dead");
-			print ("U IS DEAD"); 
-
-			GameObject.Destroy(coll.gameObject);
+			coll.gameObject.GetComponent <Sheep_Ai> ().sacrified = true;
+			//GameObject.Destroy(coll.gameObject);
 		}
 	}
 	

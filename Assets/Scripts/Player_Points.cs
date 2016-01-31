@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-using System.Security.Cryptography.X509Certificates;
-
-
 public class Player_Points : MonoBehaviour {
+
 
 	public int mana = 10;
 
@@ -23,6 +21,7 @@ public class Player_Points : MonoBehaviour {
 			mana += (value * 2);
 			text.text = this.point.ToString();
 			this.point = value;
+			print(Point);
 		}
 	}
 

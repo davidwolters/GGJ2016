@@ -110,6 +110,7 @@ public class Player_Webshoot : MonoBehaviour
 
 	void OnTriggerEnter (Collider other)
 	{
+		canShoot = false;
 
 
 		//other.GetComponent <CapsuleCollider> ().enabled = false;
