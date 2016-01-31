@@ -9,6 +9,8 @@ public class Player_Movement : MonoBehaviour
 	[SerializeField] private float turnSpeed = 180;
 	[SerializeField] private Camera cam;
 	[SerializeField] private PlayerType player;
+	[SerializeField] private ParticleSystem ps;
+
 	private float oldSpeed;
 	private float oldRotateSpeed;
 	void Start ()
@@ -19,9 +21,9 @@ public class Player_Movement : MonoBehaviour
 	
 	void Update () 
 	{
-		
+		ps.transform.position = transform.position;
 		UpdatePosition ();
-		
+
 		//UpdateRotation (); 
 
 	}
@@ -32,17 +34,22 @@ public class Player_Movement : MonoBehaviour
 		// S
 		oldSpeed = moveSpeed;
 		currentMoveSpeed = oldSpeed / 10;
-		
+
+		ps.loop = true;
+		ps.Play ();
+
 		// R
 		oldRotateSpeed = turnSpeed;
 		currentTurnSpeed = oldRotateSpeed / 10;
 		
-		
+
+
 		Invoke ("UnFreeze", seconds);
 	}
 
 	void UnFreeze ()
 	{
+		ps.Stop (); 
 		currentMoveSpeed = oldSpeed;
 		currentTurnSpeed = oldRotateSpeed;
 	}

@@ -60,9 +60,9 @@ public class Player_Spell : MonoBehaviour {
 			// Make sheeps crazy.
 			
 			GameObject [] sheeps = GameObject.FindGameObjectsWithTag(playerSheep.transform.tag);
-			sheeps [0] = null;
-			sheeps [1] = null;
-			sheeps [2] = null;
+			//sheeps [sheeps.Length - 1] = null;
+			//sheeps [sheeps.Length - 2] = null;
+			//sheeps [sheeps.Length - 3] = null;
 
 
 			print (sheeps.Length + ", : " + playerSheep.tag);
