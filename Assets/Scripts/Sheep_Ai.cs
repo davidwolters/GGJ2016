@@ -31,10 +31,15 @@ public class Sheep_Ai : MonoBehaviour {
 	[SerializeField] private float riseSpeed = 3f;
 
 	[SerializeField] private float riseTurnSpeed = 3f;
+
+	[SerializeField] private float lightSpeed = 1f;
+
+	[SerializeField] private float targetRiseY = 20f;
 	
 	// The max and min of arena.
 	private Mesh mesh;
-	
+
+	private Light light;
 	
 	
 	// Old pos, to make sure we have some action going on.
@@ -52,6 +57,8 @@ public class Sheep_Ai : MonoBehaviour {
 		// Get referacnes.
 		agent = GetComponent <NavMeshAgent> ();
 		mesh = arena.GetComponent<MeshFilter>().sharedMesh;
+		light = GetComponent <Light> ();
+		light.intensity = 0f;
 		DoNewPos ();
 		
 		// Begin move cycle.
@@ -115,6 +122,7 @@ public class Sheep_Ai : MonoBehaviour {
 		
 		// Set old pos.			
 		oldPos = dest;
+
 		
 	}
 	
@@ -133,11 +141,17 @@ public class Sheep_Ai : MonoBehaviour {
 		
 		if (sacrified)
 		{
+			light.intensity += lightSpeed * Time.deltaTime;
 			agent.enabled = false;
 			transform.position += Vector3.up * riseSpeed * Time.deltaTime;
 			transform.Rotate (0, riseTurnSpeed * Time.deltaTime, 0);
 			GetComponent <Rigidbody> ().isKinematic = true;
 			GetComponent <BoxCollider> ().enabled = false;
+
+			if (transform.position.y >= targetRiseY)
+			{
+				GameObject.Destroy (gameObject);
+			}
 		} else
 		{
 			// Check if we are in dest.

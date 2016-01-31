@@ -39,11 +39,18 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if (sheepInGame < maxSheepInGame)
+		
+		if (currentMaxSheepInGame <= 0)
 		{
-			print ("MORE SHEEPS"); 
+			if (GetSheepOfTag ("Player1Sheep") == 0)
+			{
+				print ("PLAYER 2 WON"); 
+			} else if (GetSheepOfTag ("Player2Sheep") == 0)
+			{
+				print ("PLAYER 1 WON"); 
+			}
 		}
-		GetSheepInGame ();
+		sheepInGame = GetSheepInGame ();
 		if (currentTimer > 0)
 		{
 			 
@@ -53,8 +60,9 @@ public class Sheep_SpawnSystem : MonoBehaviour
 				if (sheepInGame < currentMaxSheepInGame)
 				{
 					SpawnSheep ();
+					currentTimer = GetSpawnTime ();
+
 				}
-				currentTimer = GetSpawnTime ();
 
 			}
 		}
@@ -142,11 +150,16 @@ public class Sheep_SpawnSystem : MonoBehaviour
 		return 0;
 	}
 
-	void GetSheepInGame ()
+	int GetSheepInGame ()
 	{
 		GameObject[] sheep1 = GameObject.FindGameObjectsWithTag("Player1Sheep");
 		GameObject[] sheep2 = GameObject.FindGameObjectsWithTag("Player2Sheep");
-		sheepInGame = sheep1.Length + sheep2.Length;
+		return sheep1.Length + sheep2.Length - 3;
+	}
+
+	int GetSheepOfTag (string tag)
+	{
+		return GameObject.FindGameObjectsWithTag (tag).Length;
 	}
 
 }
