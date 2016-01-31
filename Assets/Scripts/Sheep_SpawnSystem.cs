@@ -40,16 +40,6 @@ public class Sheep_SpawnSystem : MonoBehaviour
 	void Update () 
 	{
 		
-		if (currentMaxSheepInGame <= 0)
-		{
-			if (GetSheepOfTag ("Player1Sheep") == 0)
-			{
-				print ("PLAYER 2 WON"); 
-			} else if (GetSheepOfTag ("Player2Sheep") == 0)
-			{
-				print ("PLAYER 1 WON"); 
-			}
-		}
 		sheepInGame = GetSheepInGame ();
 		if (currentTimer > 0)
 		{
@@ -159,7 +149,7 @@ public class Sheep_SpawnSystem : MonoBehaviour
 
 	int GetSheepOfTag (string tag)
 	{
-		return GameObject.FindGameObjectsWithTag (tag).Length;
+		return GameObject.FindGameObjectsWithTag (tag).Length - 3;
 	}
 
 }
