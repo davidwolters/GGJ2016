@@ -1,22 +1,25 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameOver_Buttons : MonoBehaviour 
 {
 	[SerializeField] private Button menuBtn;
+	[SerializeField] private string menuScene;
 	[SerializeField] private Button playAgainBtn;
+	[SerializeField] private string gameScene;
 
 	// Use this for initialization
 	void Start () 
 	{
 		menuBtn.onClick.AddListener (() =>
 		{
-			print ("MENU");
+			SceneManager.LoadScene(menuScene);
 		});
 
 		playAgainBtn.onClick.AddListener (() =>
 		{
-			print ("PLAY AGAIN"); 
+			SceneManager.LoadScene(gameScene); 
 		});
 	}
 	
