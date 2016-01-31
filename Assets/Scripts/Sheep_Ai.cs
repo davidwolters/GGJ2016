@@ -51,26 +51,25 @@ public class Sheep_Ai : MonoBehaviour {
 	// The distance that is required.
 	public int mandatoryDistance = 2;
 	
+    
+	
 	void Start ()
 	{
 		
+		
 		// Get referacnes.
-		agent = GetComponent <NavMeshAgent> ();
+		agent = gameObject.GetComponent <NavMeshAgent> ();
 		mesh = arena.GetComponent<MeshFilter>().sharedMesh;
 		light = GetComponent <Light> ();
 		light.intensity = 0f;
 		DoNewPos ();
-		
+		if (agent)
 		// Begin move cycle.
-		agent.SetDestination(dest);
+			agent.SetDestination(dest);
 	}
-
 	void OnEnable ()
 	{
 		Start();
-		DoNewPos ();
-		agent.SetDestination(dest);
-
 	}
 	
 	void OnCollisionStay (Collision coll)
@@ -78,12 +77,7 @@ public class Sheep_Ai : MonoBehaviour {
 		int oldMandatoryDistance = mandatoryDistance;
 		if (coll.gameObject != arena && arena)
 		{
-			//mandatoryDistance  = oldMandatoryDistance + 2;
-			DoNewPos ();
-		
-			// Begin move cycle.
-			if (agent)
-				agent.SetDestination(dest);
+			OnEnable();
 		}
 		mandatoryDistance = oldMandatoryDistance;
 	}
