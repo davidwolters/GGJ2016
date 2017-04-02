@@ -91,7 +91,7 @@ public class Player_CarrySheep : MonoBehaviour
 	{
 		sheep.GetComponent <BoxCollider> ().enabled = true;
 		this.sheep.GetComponent <Rigidbody> ().isKinematic = false;
-		sheep.GetComponent <NavMeshAgent> ().enabled = true;
+		sheep.GetComponent <UnityEngine.AI.NavMeshAgent> ().enabled = true;
 		sheep.GetComponent <Sheep_Ai> ().enabled = true;
 
 

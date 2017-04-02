@@ -16,7 +16,7 @@ public class Sheep_Ai : MonoBehaviour {
 	[HideInInspector] public bool sacrified = false;
 
 	// The navmesh agent.
-	private NavMeshAgent agent;
+	private UnityEngine.AI.NavMeshAgent agent;
 	
 	// The filed we will be navigating on.
 	[HideInInspector] public GameObject arena;
@@ -59,10 +59,11 @@ public class Sheep_Ai : MonoBehaviour {
 	{
 		
 		// Get referacnes.
-		agent = gameObject.GetComponent <NavMeshAgent> ();
+		agent = gameObject.GetComponent <UnityEngine.AI.NavMeshAgent> ();
 		mesh = arena.GetComponent<MeshFilter>().sharedMesh;
 		light = GetComponent <Light> ();
 		light.intensity = 0f;
+		ps = GameObject.FindGameObjectWithTag ("PS").GetComponent <ParticleSystem>();
 		DoNewPos ();
 		if (agent)
 		// Begin move cycle.
@@ -127,7 +128,7 @@ public class Sheep_Ai : MonoBehaviour {
 		phaseSeconds = seconds;
 		GetComponent <Rigidbody> ().isKinematic = true;
 		
-		gameObject.GetComponent<NavMeshAgent>().speed = phaseSpeed;
+		gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = phaseSpeed;
 		ps.loop = true;
 		ps.Play ();
 		
@@ -175,7 +176,7 @@ public class Sheep_Ai : MonoBehaviour {
 						ps.Stop ();
 					GetComponent <Rigidbody> ().isKinematic = false;
 					agent.acceleration = (agent.remainingDistance < closeEnoughMeters) ? deceleration : acceleration;
-					gameObject.GetComponent<NavMeshAgent>().speed = speed;
+					gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().speed = speed;
 
 				}
 				else
